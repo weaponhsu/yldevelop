@@ -1,0 +1,689 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Mua\u7532\u554a\uff5e\uff5e\uff5e",
+        "version": "1.0.0",
+        "description": "\u63a5\u53e3\u6d4b\u8bd5\u63a5\u53e3\u4e0e\u6587\u6863",
+        "contact": {
+            "email": "huangxu4328@gmail.com"
+        }
+    },
+    "host": "192.168.2.191:10005",
+    "basePath": "/v3",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/app/redirect": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "\u83b7\u53d6wap\u8df3\u8f6c\u5730\u5740",
+                "description": "\u5f53errno\u4e3a000\u65f6\uff0c\u8868\u793aapp\u5b58\u5728\uff0c\u6839\u636eredirect\u4e0eupgrade\u662f\u5426\u4e3a\u7a7a\u6765\u5224\u65ad\u662f\u5426\u9700\u8981WAP\u8df3\u8f6c\u6216\u5f3a\u66f4\uff1b\u5f53errno\u4e0d\u4e3a000\u65f6\uff0c\u53cd\u4e4b\u8868\u793aapp\u4e0d\u5b58\u5728\uff0c\u53ef\u80fd\u662f\u540e\u53f0\u5220\u9664\u4e86",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "query",
+                        "description": "\u5ba2\u6237\u7aef\u7684app id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/redirect"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/cqssc": {
+            "get": {
+                "tags": [
+                    "App"
+                ],
+                "summary": "\u83b7\u53d6cqssc\u6700\u65b0\u6570\u636e",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "start_period",
+                        "in": "query",
+                        "description": "\u5f00\u59cb\u671f\u53f7",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/cqssc"
+                        }
+                    }
+                }
+            }
+        },
+        "/banner/banners": {
+            "get": {
+                "tags": [
+                    "Banner"
+                ],
+                "summary": "\u83b7\u53d6banner",
+                "description": "\u83b7\u53d6\u6307\u5b9a\u5305\u540d\u7684banner\u3002\u5f53errno\u4e3a000\u65f6\uff0c\u8868\u793abanner\u5b58\u5728\uff0c\u5f53errno\u4e0d\u4e3a000\u65f6\uff0c\u53cd\u4e4b\u8868\u793abanner\u4e0d\u5b58\u5728\uff0c\u53ef\u80fd\u662f\u540e\u53f0\u5220\u9664\u4e86",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "query",
+                        "description": "\u5305\u540d",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c:desc{\u5012\u5e8f}|asc{\u6b63\u5e8f}",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u5b57\u6bb5 \u53ef\u9009\u503c:list_order",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/banner"
+                        }
+                    }
+                }
+            }
+        },
+        "/broadcast/broadcasts": {
+            "get": {
+                "tags": [
+                    "System"
+                ],
+                "summary": "\u83b7\u53d6\u6307\u5b9a\u5305\u540d\u7684\u5e7f\u64ad\u5185\u5bb9",
+                "description": "\u5f53errno\u4e3a000\u65f6\uff0c\u8868\u793a\u6307\u5b9a\u5305\u540d\u7684\u5e7f\u64ad\u4fe1\u606f\u5b58\u5728\uff0c\u5f53errno\u4e0d\u4e3a000\u65f6\uff0c\u53cd\u4e4b\u8868\u793a\u6307\u5b9a\u5305\u540d\u7684\u5e7f\u64ad\u4fe1\u606f\u4e0d\u5b58\u5728",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "query",
+                        "description": "\u5305\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/broadcasts"
+                        }
+                    }
+                }
+            }
+        },
+        "/system/contact": {
+            "get": {
+                "tags": [
+                    "System"
+                ],
+                "summary": "\u83b7\u53d6\u5ba2\u670dqq\u548c\u5fae\u4fe1\u53f7",
+                "description": "\u4f20\u5165app_id\uff0c\u83b7\u53d6\u8be5app\u7684\u5ba2\u670dqq\u548c\u5fae\u4fe1\u53f7",
+                "parameters": [
+                    {
+                        "name": "app_id",
+                        "in": "query",
+                        "description": "\u5305\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/contacts"
+                        }
+                    }
+                }
+            }
+        },
+        "/lottery/lotteries": {
+            "get": {
+                "tags": [
+                    "Lottery"
+                ],
+                "summary": "\u83b7\u53d6\u6307\u5b9a\u5f69\u79cd\u7684\u5f00\u5956\u7ed3\u679c",
+                "description": "\u5f53errno\u4e3a000\u65f6\uff0c\u8868\u793a\u6307\u5b9a\u5f69\u79cd\u7684\u5f00\u5956\u7ed3\u679c\u5b58\u5728\uff0c\u5f53errno\u4e0d\u4e3a000\u65f6\uff0c\u53cd\u4e4b\u8868\u793a\u6307\u5b9a\u5f69\u79cd\u7684\u5f00\u5956\u7ed3\u679c\u4e0d\u5b58\u5728\uff0c\u53ef\u80fd\u662f\u6ca1\u91c7\u96c6\u5230",
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "\u5f00\u59cb\u671f\u53f7",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "\u5f69\u79cd \u53ef\u9009\u503c:cqssc{\u91cd\u5e86\u65f6\u65f6\u5f69}|ssq{\u53cc\u8272\u7403}|pl5{\u6392\u52175}|pl3{\u6392\u52175}|x3d{3D}|dlt{\u5927\u4e50\u900f}",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/lotteries"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "links": {
+            "required": [
+                "next_page",
+                "prev_page"
+            ],
+            "properties": {
+                "next_page": {
+                    "description": "\u4e0b\u4e00\u9875\u9875\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "prev_page": {
+                    "description": "\u4e0a\u4e00\u9875\u9875\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "meta": {
+            "required": [
+                "total",
+                "per_page",
+                "total_pages",
+                "current_page",
+                "count"
+            ],
+            "properties": {
+                "total": {
+                    "description": "\u603b\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "per_page": {
+                    "description": "\u6bcf\u9875\u663e\u793a\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "total_pages": {
+                    "description": "\u603b\u9875\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "current_page": {
+                    "description": "\u5f53\u524d\u9875",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "count": {
+                    "description": "\u5f53\u524d\u4e5f\u603b\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "links": {
+                    "description": "\u4e0a\u4e00\u9875\u4e0b\u4e00\u9875\u5bf9\u8c61",
+                    "type": "object",
+                    "$ref": "#/definitions/links"
+                }
+            },
+            "type": "object"
+        },
+        "redirect": {
+            "required": [
+                "error",
+                "message",
+                "data"
+            ],
+            "properties": {
+                "error": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "data": {
+                    "description": "Class CommonController",
+                    "type": "object",
+                    "$ref": "#/definitions/redirectInfo"
+                }
+            },
+            "type": "object"
+        },
+        "redirectInfo": {
+            "properties": {
+                "is_wap": {
+                    "description": "\u662f\u5426\u5f00\u542fwap\u8df3\u8f6c",
+                    "type": "string",
+                    "format": "string"
+                },
+                "wap": {
+                    "description": "yyy",
+                    "type": "string",
+                    "format": "string"
+                },
+                "redirect_url": {
+                    "description": "wap\u8df3\u8f6c\u5730\u5740",
+                    "type": "string",
+                    "format": "string"
+                },
+                "upgrade_url": {
+                    "description": "\u5f3a\u66f4\u8df3\u8f6c\u5730\u5740",
+                    "type": "string",
+                    "format": "string"
+                },
+                "qq": {
+                    "description": "\u5ba2\u670dqq",
+                    "type": "string",
+                    "format": "string"
+                },
+                "wechat": {
+                    "description": "\u5ba2\u670dwechat",
+                    "type": "string",
+                    "format": "string"
+                },
+                "chatroom_id": {
+                    "description": "\u804a\u5929\u5ba4id",
+                    "type": "string",
+                    "format": "string"
+                },
+                "lottery": {
+                    "description": "\u662f\u5426\u5f00\u542f\u62bd\u5956:1\u4e3a\u662f,\u5176\u4ed6\u4e3a\u5426",
+                    "type": "integer",
+                    "format": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "cqssc": {
+            "required": [
+                "error",
+                "message",
+                "data"
+            ],
+            "properties": {
+                "error": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "data": {
+                    "description": "Class CommonController",
+                    "type": "object",
+                    "$ref": "#/definitions/cqsscList"
+                }
+            },
+            "type": "object"
+        },
+        "cqsscList": {
+            "type": "array",
+            "items": {
+                "title": "cqssc",
+                "$ref": "#/definitions/cqsscInfo"
+            }
+        },
+        "cqsscInfo": {
+            "properties": {
+                "period": {
+                    "description": "\u671f\u53f7",
+                    "type": "string",
+                    "format": "string"
+                },
+                "award": {
+                    "description": "\u53f7\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "predictionList": {
+                    "description": "Class CommonController",
+                    "type": "object",
+                    "$ref": "#/definitions/predictionData"
+                }
+            },
+            "type": "object"
+        },
+        "predictionData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/predictionSingle"
+            }
+        },
+        "predictionSingle": {
+            "properties": {
+                "prediction": {
+                    "description": "\u4e0b\u671f\u9884\u6d4b",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "banner": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "description": "banner\u6570\u7ec4",
+                    "type": "object",
+                    "$ref": "#/definitions/bannerResult"
+                }
+            },
+            "type": "object"
+        },
+        "bannerResult": {
+            "required": [
+                "data",
+                "meta"
+            ],
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/bannerList"
+                },
+                "meta": {
+                    "description": "\u7ffb\u9875\u4fe1\u606f",
+                    "type": "object",
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "bannerList": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/bannerSingle"
+            }
+        },
+        "bannerSingle": {
+            "required": [
+                "id",
+                "url",
+                "img"
+            ],
+            "properties": {
+                "id": {
+                    "description": "banner\u7684\u7f16\u53f7",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "url": {
+                    "description": "banner\u7684\u8df3\u8f6c\u5730\u5740",
+                    "type": "string",
+                    "format": "string"
+                },
+                "img": {
+                    "description": "banner\u663e\u793a\u7684\u56fe\u7247\u5730\u5740",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "broadcasts": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "description": "banner\u6570\u7ec4",
+                    "type": "object",
+                    "$ref": "#/definitions/broadcastsResult"
+                }
+            },
+            "type": "object"
+        },
+        "broadcastsResult": {
+            "required": [
+                "data"
+            ],
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/broadcastList"
+                }
+            },
+            "type": "object"
+        },
+        "broadcastList": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/broadcastSingle"
+            }
+        },
+        "broadcastSingle": {
+            "required": [
+                "period",
+                "award",
+                "prediction_list"
+            ],
+            "properties": {
+                "message": {
+                    "description": "\u5e7f\u64ad\u7684\u6587\u5b57",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "contacts": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "description": "\u5ba2\u670d\u8054\u7cfb\u65b9\u5f0f",
+                    "type": "object",
+                    "$ref": "#/definitions/contactResult"
+                }
+            },
+            "type": "object"
+        },
+        "contactResult": {
+            "required": [
+                "qq",
+                "wechat"
+            ],
+            "properties": {
+                "qq": {
+                    "description": "\u5ba2\u670dqq\u53f7",
+                    "type": "string",
+                    "format": "string"
+                },
+                "wechat": {
+                    "description": "\u5ba2\u670d\u5fae\u4fe1\u53f7",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "lotteries": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "description": "banner\u6570\u7ec4",
+                    "type": "object",
+                    "$ref": "#/definitions/lotteriesResult"
+                }
+            },
+            "type": "object"
+        },
+        "lotteriesResult": {
+            "required": [
+                "data",
+                "meta"
+            ],
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/lotteriesList"
+                },
+                "meta": {
+                    "description": "\u7ffb\u9875\u4fe1\u606f",
+                    "type": "object",
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "lotteriesList": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/lotterySingle"
+            }
+        },
+        "lotterySingle": {
+            "required": [
+                "period",
+                "award",
+                "prediction_list"
+            ],
+            "properties": {
+                "period": {
+                    "description": "\u671f\u53f7",
+                    "type": "string",
+                    "format": "string"
+                },
+                "award": {
+                    "description": "\u53f7\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "prediction_list": {
+                    "description": "\u4e0b\u6b21\u9884\u6d4b(\u4f1a\u67095\u4e2a)",
+                    "$ref": "#/definitions/predictionList"
+                }
+            },
+            "type": "object"
+        },
+        "predictionList": {
+            "type": "array",
+            "items": {
+                "title": "prediction_list",
+                "description": "\u4e0b\u671f\u9884\u6d4b",
+                "type": "string",
+                "format": "string"
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+/application/library/ErrorMsg/
+/application/library/Tool/
+/cacert/
+/code_backup/
+/ide/
+/log/
+/vendor/
+/.idea/
+composer.lock

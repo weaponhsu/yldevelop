@@ -1,0 +1,2275 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "\u8bba\u575b",
+        "version": "1.0.0",
+        "description": "\u63a5\u53e3\u6d4b\u8bd5\u63a5\u53e3\u4e0e\u6587\u6863",
+        "contact": {
+            "email": "huangxu4328@gmail.com"
+        }
+    },
+    "host": "www.yldevelop.com",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/common/common/rsaEncrypt": {
+            "get": {
+                "tags": [
+                    "Common"
+                ],
+                "summary": "rsa\u52a0\u5bc6",
+                "parameters": [
+                    {
+                        "name": "sign",
+                        "in": "query",
+                        "description": "\u8981\u7b7e\u540d\u7684\u5b57\u7b26\u4e32 \u4f8busername=\u540e\u53f0\u767b\u5f55\u8d26\u6237&password=\u540e\u53f0\u767b\u5f55\u5bc6\u7801",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c\u4e2d\u5305\u542berror,message,result\u3002result\u4e3a\u53c2\u6570\u516c\u94a5\u52a0\u5bc6\u8fc7\u540e\u7684\u5b57\u7b26\u4e32"
+                    }
+                }
+            }
+        },
+        "/common/common/upload": {
+            "post": {
+                "tags": [
+                    "Common"
+                ],
+                "summary": "\u4e0a\u4f20\u56fe\u7247",
+                "description": "\u6d4b\u8bd5\u4e0a\u4f20\u56fe\u7247\u5730\u5740:http://192.168.x.x:xxx/index/test",
+                "consumes": [
+                    "multipart/form-data",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "\u56fe\u7247",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c\u4e2d\u5305\u542berror,message,result\u3002result\u4e3a\u53c2\u6570\u516c\u94a5\u52a0\u5bc6\u8fc7\u540e\u7684\u5b57\u7b26\u4e32"
+                    }
+                }
+            }
+        },
+        "/v3/common/verification": {
+            "get": {
+                "tags": [
+                    "Common"
+                ],
+                "summary": "\u83b7\u53d6\u77ed\u4fe1\u9a8c\u8bc1\u7801",
+                "description": "\n     * mobile \u5fc5\u987b\u53c2\u6570 \u624b\u673a\u53f7\u7801\n     * type \u5fc5\u987b\u53c2\u6570 \u7c7b\u578b \u53ef\u9009\u503c: login=\u767b\u9646,register=\u6ce8\u518c\n     * captcha=\u56fe\u7247\u9a8c\u8bc1\u7801 \u975e\u5fc5\u987b\u53c2\u6570",
+                "parameters": [
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u6240\u6709\u53c2\u6570\u4f7f\u7528&\u8fde\u63a5\u7684rsa\u52a0\u5bc6\u7ed3\u679c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c\u4e2d\u5305\u542berror,message,result\u3002result\u4e3a\u53c2\u6570\u516c\u94a5\u52a0\u5bc6\u8fc7\u540e\u7684\u5b57\u7b26\u4e32"
+                    }
+                }
+            }
+        },
+        "/v3/common/location": {
+            "get": {
+                "tags": [
+                    "Common"
+                ],
+                "summary": "\u83b7\u53d6\u7701\u5e02\u533a\u53bf\u8857\u9053\u63a5\u53e3",
+                "description": "\n     * type \u5fc5\u987b\u53c2\u6570 \u7c7b\u578b \u53ef\u9009\u503c: 1\u4e3a\u7701\u4efd\uff0c2\u4e3a\u57ce\u5e02\uff0c3\u4e3a\u533a\u53bf\uff0c4\u4e3a\u8857\u9053\n     * parent_id \u975e\u5fc5\u987b\u53c2\u6570 \u4e0a\u7ea7\u884c\u653f\u5355\u4f4d\u7f16\u53f7 \u83b7\u53d6\u5e02\u3001\u533a\u53bf\u3001\u8857\u9053\u65f6\u5fc5\u987b\uff0c\u9700\u8981\u53d1\u9001\u4e0a\u7ea7\u884c\u653f\u5355\u4f4d\u7f16\u53f7",
+                "parameters": [
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u6240\u6709\u53c2\u6570\u4f7f\u7528&\u8fde\u63a5\u7684rsa\u52a0\u5bc6\u7ed3\u679c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c\u4e2d\u5305\u542berror,message,result\u3002result\u4e3a\u53c2\u6570\u516c\u94a5\u52a0\u5bc6\u8fc7\u540e\u7684\u5b57\u7b26\u4e32"
+                    }
+                }
+            }
+        },
+        "/admin/access/list": {
+            "get": {
+                "tags": [
+                    "\u6743\u9650\u6a21\u5757"
+                ],
+                "summary": "\u83b7\u53d6\u6743\u9650\u5217\u8868",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c: desc|asc",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u5b57\u6bb5 \u53ef\u9009\u503c: id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "query",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/ruleListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/admin/access/create": {
+            "post": {
+                "tags": [
+                    "\u6743\u9650\u6a21\u5757"
+                ],
+                "summary": "\u521b\u5efa\u6743\u9650\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "\u6743\u9650\u540d\u79f0",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "stats",
+                        "in": "formData",
+                        "description": "\u72b6\u6001 \u53ef\u9009\u503c: 0\u4e3a\u5426,1\u4e3a\u662f",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "menu_id",
+                        "in": "formData",
+                        "description": "\u83dc\u5355\u7f16\u53f7 \u591a\u4e2a\u7528\u534a\u89d2\u9017\u53f7\u95f4\u9694 \u6570\u636e\u4eceadmin/menu/list\u63a5\u53e3\u83b7\u53d6",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/menuSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    }
+                }
+            }
+        },
+        "/admin/access/{id}/edit": {
+            "put": {
+                "tags": [
+                    "\u6743\u9650\u6a21\u5757"
+                ],
+                "summary": "\u7f16\u8f91\u6743\u9650\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/access/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "\u6743\u9650\u540d",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "stats",
+                        "in": "formData",
+                        "description": "\u72b6\u6001 \u53ef\u9009\u503c: 0\u4e3a\u5426,1\u4e3a\u662f",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "menu_id",
+                        "in": "formData",
+                        "description": "\u83dc\u5355\u7f16\u53f7 \u591a\u4e2a\u7528\u534a\u89d2\u9017\u53f7\u95f4\u9694 \u6570\u636e\u4eceadmin/menu/list\u63a5\u53e3\u83b7\u53d6",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/roleSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    },
+                    "422": {
+                        "description": "\u7f16\u8f91\u5931\u8d25"
+                    }
+                }
+            }
+        },
+        "/admin/access/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "\u6743\u9650\u6a21\u5757"
+                ],
+                "summary": "\u5220\u9664\u5355\u4e2a\u6743\u9650\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/access/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u5220\u9664\u6210\u529f, \u6ca1\u6709\u8fd4\u56de\u7ed3\u679c"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u89d2\u8272\u5df2\u7ecf\u4e0d\u5b58\u5728\u4e86"
+                    }
+                }
+            }
+        },
+        "/admin/menu/list": {
+            "get": {
+                "tags": [
+                    "\u83dc\u5355\u6a21\u5757"
+                ],
+                "summary": "\u83b7\u53d6\u83dc\u5355\u5217\u8868",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c: desc|asc",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u5b57\u6bb5 \u53ef\u9009\u503c: id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "query",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/menuListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/admin/menu/create": {
+            "post": {
+                "tags": [
+                    "\u83dc\u5355\u6a21\u5757"
+                ],
+                "summary": "\u521b\u5efa\u83dc\u5355\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "\u83dc\u5355\u4e2d\u6587\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "parent",
+                        "in": "formData",
+                        "description": "\u4e0a\u7ea7\u7f16\u53f7 admin/menu/list\u63a5\u53e3\u4f20\u5165is_operation=0",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "description": "\u7c7b\u578b\uff0c\u53ef\u9009\u503c: 0\u4e3a\u83dc\u5355\u9879\u30011\u4e3a\u63a5\u53e3",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "url",
+                        "in": "formData",
+                        "description": "\u63a5\u53e3\u5730\u5740 \u82e5\u662f\u83dc\u5355\u9879\u5219\u8be5\u53c2\u6570\u4e3a\u7a7a",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/menuSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    }
+                }
+            }
+        },
+        "/admin/menu/{id}/edit": {
+            "put": {
+                "tags": [
+                    "\u83dc\u5355\u6a21\u5757"
+                ],
+                "summary": "\u7f16\u8f91\u83dc\u5355\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/menu/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "\u83dc\u5355\u4e2d\u6587\u540d",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "parent",
+                        "in": "formData",
+                        "description": "\u4e0a\u7ea7\u7f16\u53f7 admin/menu/list\u63a5\u53e3\u4f20\u5165is_operation=0",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "description": "\u7c7b\u578b\uff0c\u53ef\u9009\u503c: 0\u4e3a\u83dc\u5355\u9879\u30011\u4e3a\u63a5\u53e3",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "url",
+                        "in": "formData",
+                        "description": "\u63a5\u53e3\u5730\u5740 \u82e5\u662f\u83dc\u5355\u9879\u5219\u8be5\u53c2\u6570\u4e3a\u7a7a",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/menuSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    },
+                    "422": {
+                        "description": "\u7f16\u8f91\u5931\u8d25"
+                    }
+                }
+            }
+        },
+        "/admin/menu/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "\u83dc\u5355\u6a21\u5757"
+                ],
+                "summary": "\u5220\u9664\u83dc\u5355\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/menu/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u5220\u9664\u6210\u529f, \u6ca1\u6709\u8fd4\u56de\u7ed3\u679c"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u89d2\u8272\u5df2\u7ecf\u4e0d\u5b58\u5728\u4e86"
+                    }
+                }
+            }
+        },
+        "/admin/role/list": {
+            "get": {
+                "tags": [
+                    "\u89d2\u8272\u6a21\u5757"
+                ],
+                "summary": "\u89d2\u8272\u5217\u8868\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c: desc|asc",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u5b57\u6bb5 \u53ef\u9009\u503c: id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u540d \u6a21\u7cca\u67e5\u8be2",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "query",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/roleListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/admin/role/create": {
+            "post": {
+                "tags": [
+                    "\u89d2\u8272\u6a21\u5757"
+                ],
+                "summary": "\u521b\u5efa\u89d2\u8272\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "\u89d2\u8272\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access",
+                        "in": "formData",
+                        "description": "\u591a\u4e2a\u6743\u9650\u7528\u534a\u89d2\u9017\u53f7\u95f4\u9694 admin/access/list\u63a5\u53e3\u8fd4\u56de\u7684id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/roleSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    }
+                }
+            }
+        },
+        "/admin/role/{id}/edit": {
+            "put": {
+                "tags": [
+                    "\u89d2\u8272\u6a21\u5757"
+                ],
+                "summary": "\u7f16\u8f91\u89d2\u8272\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/role/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "\u89d2\u8272\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access",
+                        "in": "formData",
+                        "description": "\u591a\u4e2a\u6743\u9650\u7528\u534a\u89d2\u9017\u53f7\u95f4\u9694 admin/access/list\u63a5\u53e3\u8fd4\u56de\u7684id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/roleSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    },
+                    "422": {
+                        "description": "\u7f16\u8f91\u5931\u8d25"
+                    }
+                }
+            }
+        },
+        "/admin/role/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "\u89d2\u8272\u6a21\u5757"
+                ],
+                "summary": "\u5220\u9664\u89d2\u8272\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/role/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u5220\u9664\u6210\u529f, \u6ca1\u6709\u8fd4\u56de\u7ed3\u679c"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u89d2\u8272\u5df2\u7ecf\u4e0d\u5b58\u5728\u4e86"
+                    }
+                }
+            }
+        },
+        "/admin/role/batchdelete": {
+            "post": {
+                "tags": [
+                    "\u89d2\u8272\u6a21\u5757"
+                ],
+                "summary": "\u6279\u91cf\u89d2\u8272\u63a5\u53e3 \u6682\u65f6\u4e0d\u7528",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ids",
+                        "in": "formData",
+                        "description": "\u8981\u5220\u9664\u7684id\uff0c\u591a\u4e2a\u7528\u534a\u89d2\u9017\u53f7\u95f4\u9694",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u5220\u9664\u6210\u529f, \u6ca1\u6709\u8fd4\u56de\u7ed3\u679c"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u89d2\u8272\u5df2\u7ecf\u4e0d\u5b58\u5728\u4e86"
+                    }
+                }
+            }
+        },
+        "/admin/user/login": {
+            "post": {
+                "tags": [
+                    "\u767b\u5f55\u767b\u51fa"
+                ],
+                "summary": "\u540e\u53f0\u8d26\u53f7\u767b\u5f55\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "description": "\u7528\u6237\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "\u5bc6\u7801",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/userSingleData"
+                        }
+                    },
+                    "401": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    }
+                }
+            }
+        },
+        "/admin/user/{id}/authenticator": {
+            "get": {
+                "tags": [
+                    "\u767b\u5f55\u767b\u51fa"
+                ],
+                "summary": "\u8c37\u6b4c\u8ba4\u8bc1\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u767b\u9646\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "\u8c37\u6b4c\u9a8c\u8bc1\u7801",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "query",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    },
+                    "401": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    }
+                }
+            }
+        },
+        "/admin/user/{id}/info": {
+            "get": {
+                "tags": [
+                    "\u767b\u5f55\u767b\u51fa"
+                ],
+                "summary": "\u83b7\u53d6\u5f53\u524d\u767b\u9646\u8d26\u53f7\u90fd\u6709\u54ea\u4e9b\u6743\u9650\u6a21\u5757\u5206\u7ec4",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u767b\u9646\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    },
+                    "401": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    }
+                }
+            }
+        },
+        "/admin/user/logout": {
+            "post": {
+                "tags": [
+                    "\u767b\u5f55\u767b\u51fa"
+                ],
+                "summary": "\u540e\u53f0\u8d26\u53f7\u9000\u51fa\u767b\u5f55\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/userSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    }
+                }
+            }
+        },
+        "/admin/user/list": {
+            "get": {
+                "tags": [
+                    "\u540e\u53f0\u8d26\u53f7\u6a21\u5757"
+                ],
+                "summary": "\u540e\u53f0\u8d26\u53f7\u5217\u8868\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c: desc|asc",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "\u6392\u5e8f\u5b57\u6bb5 \u53ef\u9009\u503c: id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "\u540e\u53f0\u8d26\u53f7\u767b\u5f55\u540d \u6a21\u7cca\u67e5\u8be2",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "role",
+                        "in": "query",
+                        "description": "\u89d2\u8272\u7f16\u53f7 admin/role/list\u63a5\u53e3\u8fd4\u56de\u7684id",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "stats",
+                        "in": "query",
+                        "description": "\u8d26\u53f7\u72b6\u6001 \u53ef\u9009\u503c: 0\u5c01\u7981|1\u5141\u8bb8\u767b\u5f55",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "created_start_time",
+                        "in": "query",
+                        "description": "\u540e\u53f0\u8d26\u53f7\u521b\u5efa\u65f6\u95f4",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "created_end_time",
+                        "in": "query",
+                        "description": "\u540e\u53f0\u8d26\u53f7\u521b\u5efa\u65f6\u95f4",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "query",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/userListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/admin/user/create": {
+            "post": {
+                "tags": [
+                    "\u540e\u53f0\u8d26\u53f7\u6a21\u5757"
+                ],
+                "summary": "\u521b\u5efa\u540e\u53f0\u8d26\u53f7\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "description": "\u540e\u53f0\u8d26\u53f7\u767b\u5f55\u540d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "\u767b\u5f55\u5bc6\u7801",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "role",
+                        "in": "formData",
+                        "description": "\u89d2\u8272\u7f16\u53f7 admin/role/list\u63a5\u53e3\u8fd4\u56de\u7684id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "stats",
+                        "in": "formData",
+                        "description": "\u8d26\u53f7\u72b6\u6001 \u53ef\u9009\u503c: 0\u5c01\u7981|1\u5141\u8bb8\u767b\u5f55",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "formData",
+                        "description": "\u624b\u673a\u53f7\u7801 \u7528\u6765\u627e\u56de\u5bc6\u7801\u7528\u7684",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/userSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    }
+                }
+            }
+        },
+        "/admin/user/{id}/edit": {
+            "put": {
+                "tags": [
+                    "\u540e\u53f0\u8d26\u53f7\u6a21\u5757"
+                ],
+                "summary": "\u7f16\u8f91\u540e\u53f0\u8d26\u53f7\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/user/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "\u767b\u5f55\u5bc6\u7801",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "role",
+                        "in": "formData",
+                        "description": "\u89d2\u8272\u7f16\u53f7 admin/role/list\u63a5\u53e3\u8fd4\u56de\u7684id",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "stats",
+                        "in": "formData",
+                        "description": "\u8d26\u53f7\u72b6\u6001 \u53ef\u9009\u503c: 0\u5c01\u7981|1\u5141\u8bb8\u767b\u5f55",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "formData",
+                        "description": "\u624b\u673a\u53f7\u7801 \u7528\u6765\u627e\u56de\u5bc6\u7801\u7528\u7684",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/userSingleData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    },
+                    "422": {
+                        "description": "\u7f16\u8f91\u5931\u8d25"
+                    }
+                }
+            }
+        },
+        "/admin/user/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "\u540e\u53f0\u8d26\u53f7\u6a21\u5757"
+                ],
+                "summary": "\u5220\u9664\u540e\u53f0\u8d26\u53f7\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/user/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u5220\u9664\u6210\u529f, \u6ca1\u6709\u8fd4\u56de\u7ed3\u679c"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u7528\u6237\u5df2\u7ecf\u4e0d\u5b58\u5728\u4e86"
+                    }
+                }
+            }
+        },
+        "/admin/user/batchdelete": {
+            "post": {
+                "tags": [
+                    "\u540e\u53f0\u8d26\u53f7\u6a21\u5757"
+                ],
+                "summary": "\u6279\u91cf\u5220\u9664\u540e\u53f0\u8d26\u53f7\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ids",
+                        "in": "formData",
+                        "description": "\u8981\u5220\u9664\u7684id\uff0c\u591a\u4e2a\u7528\u534a\u89d2\u9017\u53f7\u95f4\u9694",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sign",
+                        "in": "formData",
+                        "description": "\u7b7e\u540d",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u5220\u9664\u6210\u529f, \u6ca1\u6709\u8fd4\u56de\u7ed3\u679c"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u7528\u6237\u5df2\u7ecf\u4e0d\u5b58\u5728\u4e86"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "accessSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/accessSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "accessSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/accessSingle"
+                }
+            },
+            "type": "object"
+        },
+        "accessListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/accessListObj"
+                }
+            },
+            "type": "object"
+        },
+        "accessListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/accessData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "accessData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/accessSingle"
+            }
+        },
+        "accessSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "rule_id": {
+                    "description": "\u89d2\u8272",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "menu_id": {
+                    "description": "\u83dc\u5355",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "authoritySingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/authoritySingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "authoritySingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/authoritySingle"
+                }
+            },
+            "type": "object"
+        },
+        "authorityListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/authorityListObj"
+                }
+            },
+            "type": "object"
+        },
+        "authorityListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/authorityData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "authorityData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/authoritySingle"
+            }
+        },
+        "authoritySingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "rule_id": {
+                    "description": "\u6743\u9650",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "role_id": {
+                    "description": "\u89d2\u8272",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "menuSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/menuSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "menuSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/menuSingle"
+                }
+            },
+            "type": "object"
+        },
+        "menuListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/menuListObj"
+                }
+            },
+            "type": "object"
+        },
+        "menuListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/menuData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "menuData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/menuSingle"
+            }
+        },
+        "menuSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "\u663e\u793a\u540d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "parent": {
+                    "description": "\u4e0a\u7ea7",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "path": {
+                    "description": "\u5c42\u7ea7\u5173\u7cfb",
+                    "type": "string",
+                    "format": "string"
+                },
+                "url": {
+                    "description": "\u7279\u6b8aURL",
+                    "type": "string",
+                    "format": "string"
+                },
+                "display": {
+                    "description": "\u662f\u5426\u663e\u793a\u5230\u5de6\u4fa7\u83dc\u5355(0\u4e3a\u5426,1\u4e3a\u662f,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "is_operation": {
+                    "description": "\u662f\u5426\u662f\u64cd\u4f5c(0\u4e3a\u5426,1\u4e3a\u662f,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "list_order": {
+                    "description": "\u6392\u5e8f",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u6700\u8fd1\u4e00\u6b21\u7f16\u8f91\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u7f16\u8f91\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "roleSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/roleSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "roleSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/roleSingle"
+                }
+            },
+            "type": "object"
+        },
+        "roleListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/roleListObj"
+                }
+            },
+            "type": "object"
+        },
+        "roleListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/roleData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "roleData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/roleSingle"
+            }
+        },
+        "roleSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "\u89d2\u8272",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u4fee\u6539\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u4fee\u6539\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "ruleSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/ruleSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "ruleSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/ruleSingle"
+                }
+            },
+            "type": "object"
+        },
+        "ruleListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/ruleListObj"
+                }
+            },
+            "type": "object"
+        },
+        "ruleListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/ruleData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "ruleData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/ruleSingle"
+            }
+        },
+        "ruleSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "\u6743\u9650\u540d\u79f0",
+                    "type": "string",
+                    "format": "string"
+                },
+                "stats": {
+                    "description": "\u72b6\u6001(0\u4e3a\u5426,1\u4e3a\u662f,\u9ed8\u8ba41)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u8005",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u66f4\u65b0\u8005",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u66f4\u65b0\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "userSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/userSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "userSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/userSingle"
+                }
+            },
+            "type": "object"
+        },
+        "userListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/userListObj"
+                }
+            },
+            "type": "object"
+        },
+        "userListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/userData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "userData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/userSingle"
+            }
+        },
+        "userSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "username": {
+                    "description": "\u767b\u5f55\u540d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "password": {
+                    "description": "\u5bc6\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "google_secret": {
+                    "description": "\u8c37\u6b4c\u8ba4\u8bc1\u5668",
+                    "type": "string",
+                    "format": "string"
+                },
+                "role": {
+                    "description": "\u89d2\u8272",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "mobile": {
+                    "description": "\u624b\u673a\u53f7\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "stats": {
+                    "description": "\u72b6\u6001(0\u4e3a\u5c01\u7981,1\u4e3a\u5141\u8bb8\u767b\u5f55,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "uuid": {
+                    "description": "uuid",
+                    "type": "string",
+                    "format": "string"
+                },
+                "last_login_time": {
+                    "description": "\u4e0a\u6b21\u767b\u5f55\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "login_times": {
+                    "description": "\u767b\u5f55\u6b21\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u4fee\u6539\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u4fee\u6539\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "links": {
+            "required": [
+                "next_page",
+                "prev_page"
+            ],
+            "properties": {
+                "next_page": {
+                    "description": "\u4e0b\u4e00\u9875\u9875\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "prev_page": {
+                    "description": "\u4e0a\u4e00\u9875\u9875\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "meta": {
+            "required": [
+                "total",
+                "per_page",
+                "total_pages",
+                "current_page",
+                "count"
+            ],
+            "properties": {
+                "total": {
+                    "description": "\u603b\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "per_page": {
+                    "description": "\u6bcf\u9875\u663e\u793a\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "total_pages": {
+                    "description": "\u603b\u9875\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "current_page": {
+                    "description": "\u5f53\u524d\u9875",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "count": {
+                    "description": "\u5f53\u524d\u4e5f\u603b\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "links": {
+                    "description": "\u4e0a\u4e00\u9875\u4e0b\u4e00\u9875\u5bf9\u8c61",
+                    "type": "object",
+                    "$ref": "#/definitions/links"
+                }
+            },
+            "type": "object"
+        },
+        "unauthorized": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u9519\u8bef\u7f16\u53f7",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u4fe1\u606f\u63d0\u793a",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "description": "\u7a7a\u5bf9\u8c61",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,2431 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "\u8bba\u575b",
+        "version": "1.0.0",
+        "description": "\u63a5\u53e3\u6d4b\u8bd5\u63a5\u53e3\u4e0e\u6587\u6863",
+        "contact": {
+            "email": "huangxu4328@gmail.com"
+        }
+    },
+    "host": "www.ylmall.com",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/common/common/rsaEncrypt": {
+            "get": {
+                "tags": [
+                    "Common"
+                ],
+                "summary": "rsa\u52a0\u5bc6",
+                "parameters": [
+                    {
+                        "name": "sign",
+                        "in": "query",
+                        "description": "\u8981\u7b7e\u540d\u7684\u5b57\u7b26\u4e32 \u4f8busername=\u540e\u53f0\u767b\u5f55\u8d26\u6237&password=\u540e\u53f0\u767b\u5f55\u5bc6\u7801",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c\u4e2d\u5305\u542berror,message,result\u3002result\u4e3a\u53c2\u6570\u516c\u94a5\u52a0\u5bc6\u8fc7\u540e\u7684\u5b57\u7b26\u4e32"
+                    }
+                }
+            }
+        },
+        "/common/common/upload": {
+            "post": {
+                "tags": [
+                    "Common"
+                ],
+                "summary": "\u4e0a\u4f20\u56fe\u7247",
+                "description": "\u6d4b\u8bd5\u4e0a\u4f20\u56fe\u7247\u5730\u5740:http://192.168.x.x:xxx/index/test",
+                "consumes": [
+                    "multipart/form-data",
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "\u56fe\u7247",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c\u4e2d\u5305\u542berror,message,result\u3002result\u4e3a\u53c2\u6570\u516c\u94a5\u52a0\u5bc6\u8fc7\u540e\u7684\u5b57\u7b26\u4e32"
+                    }
+                }
+            }
+        },
+        "/v3/common/verification": {
+            "get": {
+                "tags": [
+                    "Common"
+                ],
+                "summary": "\u83b7\u53d6\u77ed\u4fe1\u9a8c\u8bc1\u7801",
+                "description": "\n     * mobile \u5fc5\u987b\u53c2\u6570 \u624b\u673a\u53f7\u7801\n     * type \u5fc5\u987b\u53c2\u6570 \u7c7b\u578b \u53ef\u9009\u503c: login=\u767b\u9646,register=\u6ce8\u518c\n     * captcha=\u56fe\u7247\u9a8c\u8bc1\u7801 \u975e\u5fc5\u987b\u53c2\u6570",
+                "parameters": [
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u6240\u6709\u53c2\u6570\u4f7f\u7528&\u8fde\u63a5\u7684rsa\u52a0\u5bc6\u7ed3\u679c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c\u4e2d\u5305\u542berror,message,result\u3002result\u4e3a\u53c2\u6570\u516c\u94a5\u52a0\u5bc6\u8fc7\u540e\u7684\u5b57\u7b26\u4e32"
+                    }
+                }
+            }
+        },
+        "/v3/common/location": {
+            "get": {
+                "tags": [
+                    "Common"
+                ],
+                "summary": "\u83b7\u53d6\u7701\u5e02\u533a\u53bf\u8857\u9053\u63a5\u53e3",
+                "description": "\n     * type \u5fc5\u987b\u53c2\u6570 \u7c7b\u578b \u53ef\u9009\u503c: 1\u4e3a\u7701\u4efd\uff0c2\u4e3a\u57ce\u5e02\uff0c3\u4e3a\u533a\u53bf\uff0c4\u4e3a\u8857\u9053\n     * parent_id \u975e\u5fc5\u987b\u53c2\u6570 \u4e0a\u7ea7\u884c\u653f\u5355\u4f4d\u7f16\u53f7 \u83b7\u53d6\u5e02\u3001\u533a\u53bf\u3001\u8857\u9053\u65f6\u5fc5\u987b\uff0c\u9700\u8981\u53d1\u9001\u4e0a\u7ea7\u884c\u653f\u5355\u4f4d\u7f16\u53f7",
+                "parameters": [
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u6240\u6709\u53c2\u6570\u4f7f\u7528&\u8fde\u63a5\u7684rsa\u52a0\u5bc6\u7ed3\u679c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c\u4e2d\u5305\u542berror,message,result\u3002result\u4e3a\u53c2\u6570\u516c\u94a5\u52a0\u5bc6\u8fc7\u540e\u7684\u5b57\u7b26\u4e32"
+                    }
+                }
+            }
+        },
+        "/v3/account/list": {
+            "get": {
+                "tags": [
+                    "\u7528\u6237\u63d0\u73b0\u8d26\u53f7\u4fe1\u606f"
+                ],
+                "summary": "\u83b7\u53d6\u7528\u6237\u63d0\u73b0\u8d26\u53f7\u4fe1\u606f\u5217\u8868\u6570\u636e\u63a5\u53e3",
+                "description": "\n     * page \u5fc5\u987b\u53c2\u6570 \u9875\u7801\n     * page_size \u5fc5\u987b\u53c2\u6570 \u6bcf\u9875\u663e\u793a\u6761\u6570\n     * sort \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c:desc\u964d\u5e8f\u3001asc\u751f\u5e8f\n     * order \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u5b57\u6bb5 \u56fa\u5b9a\u503c id\n     *     ",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/accountListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/account/create": {
+            "post": {
+                "tags": [
+                    "\u7528\u6237\u63d0\u73b0\u8d26\u53f7\u4fe1\u606f"
+                ],
+                "summary": "\u521b\u5efa\u7528\u6237\u63d0\u73b0\u8d26\u53f7\u4fe1\u606f\u63a5\u53e3",
+                "description": "\n     * type \u5fc5\u987b\u53c2\u6570 \u7c7b\u578b 0\u4e3a\u652f\u4ed8\u5b9d,1\u4e3a\u5fae\u4fe1,2\u4e3a\u94f6\u884c\u5361\uff0c\u73b0\u9636\u6bb5\u53ea\u63d0\u4f9b\u652f\u4ed8\u5b9d,\n     * name \u5fc5\u987b\u53c2\u6570 \u59d3\u540d\n     * account \u5fc5\u987b\u53c2\u6570 \u652f\u4ed8\u5b9d\u8d26\u53f7\n     * mobile \u5fc5\u987b\u53c2\u6570 \u624b\u673a\u53f7\u7801",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/accountSingleData"
+                        }
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/account/{id}/edit": {
+            "put": {
+                "tags": [
+                    "\u7528\u6237\u63d0\u73b0\u8d26\u53f7\u4fe1\u606f"
+                ],
+                "summary": "\u521b\u5efa\u7528\u6237\u63d0\u73b0\u8d26\u53f7\u4fe1\u606f\u63a5\u53e3",
+                "description": "\n     * type \u975e\u5fc5\u987b\u53c2\u6570 \u4fee\u6539\u7c7b\u578b\u65f6\u5fc5\u987b 0\u4e3a\u652f\u4ed8\u5b9d,1\u4e3a\u5fae\u4fe1,2\u4e3a\u94f6\u884c\u5361\uff0c\u73b0\u9636\u6bb5\u53ea\u63d0\u4f9b\u652f\u4ed8\u5b9d,\n     * name \u975e\u5fc5\u987b\u53c2\u6570 \u4fee\u6539\u59d3\u540d\u65f6\u5fc5\u987b\n     * account \u975e\u5fc5\u987b\u53c2\u6570 \u4fee\u6539\u652f\u4ed8\u5b9d\u8d26\u53f7\u65f6\u5fc5\u987b\n     * mobile \u975e\u5fc5\u987b\u53c2\u6570 \u4fee\u6539\u624b\u673a\u53f7\u7801\u65f6\u5fc5\u987b",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/v3/account/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/accountSingleData"
+                        }
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/account/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "\u7528\u6237\u63d0\u73b0\u8d26\u53f7\u4fe1\u606f"
+                ],
+                "summary": "\u5220\u9664\u7528\u6237\u63d0\u73b0\u8d26\u53f7\u4fe1\u606f\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/v3/account/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u5220\u9664\u6210\u529f, \u6ca1\u6709\u8fd4\u56de\u7ed3\u679c"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/address/create": {
+            "post": {
+                "tags": [
+                    "\u6536\u8d27\u5730\u5740"
+                ],
+                "summary": "\u521b\u5efa\u6536\u8d27\u5730\u5740\u63a5\u53e3",
+                "description": "\n     * province \u5fc5\u987b\u53c2\u6570 \u7701\u4efd\u540d\u79f0\n     * city \u5fc5\u987b\u53c2\u6570 \u57ce\u5e02\u540d\u79f0\n     * area \u5fc5\u987b\u540d\u79f0 \u533a\u53bf\u540d\u79f0\n     * street \u975e\u5fc5\u987b\u53c2\u6570 \u8857\u9053\u540d\u79f0\n     * address \u5fc5\u987b\u53c2\u6570 \u8be6\u7ec6\u5730\u5740\n     * name \u5fc5\u987b\u53c2\u6570 \u6536\u8d27\u4eba\u59d3\u540d\n     * mobile \u5fc5\u987b\u53c2\u6570 \u6536\u8d27\u4eba\u624b\u673a\u53f7\n     * is_default \u5fc5\u987b\u53c2\u6570 \u662f\u5426\u662f\u9ed8\u8ba4\u5730\u5740 0\u4e3a\u5426\uff0c1\u4e3a\u662f\n     * zipcode \u975e\u5fc5\u987b\u53c2\u6570 \u90ae\u653f\u7f16\u7801",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/addressSingleData"
+                        }
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/address/list": {
+            "get": {
+                "tags": [
+                    "\u6536\u8d27\u5730\u5740"
+                ],
+                "summary": "\u83b7\u53d6\u6536\u8d27\u5730\u5740\u5217\u8868\u6570\u636e\u63a5\u53e3",
+                "description": "\n     * page \u5fc5\u987b\u53c2\u6570 \u9875\u7801\n     * page_size \u5fc5\u987b\u53c2\u6570 \u6bcf\u9875\u663e\u793a\u6761\u6570\n     * sort \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c:desc\u964d\u5e8f\u3001asc\u751f\u5e8f\n     * order \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u5b57\u6bb5 \u56fa\u5b9a\u503c id\n     *     ",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/addressListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/address/{id}/edit": {
+            "put": {
+                "tags": [
+                    "\u6536\u8d27\u5730\u5740"
+                ],
+                "summary": "\u7f16\u8f91\u6536\u8d27\u5730\u5740\u63a5\u53e3",
+                "description": "\n     * province \u975e\u5fc5\u987b\u53c2\u6570 \u7701\u4efd\u540d\u79f0 \u4fee\u6539\u7701\u4efd\u65f6\u5fc5\u987b\n     * city \u975e\u5fc5\u987b\u53c2\u6570 \u57ce\u5e02\u540d\u79f0 \u4fee\u6539\u57ce\u5e02\u65f6\u5fc5\u987b\n     * area \u975e\u5fc5\u987b\u540d\u79f0 \u533a\u53bf\u540d\u79f0 \u4fee\u6539\u533a\u53bf\u65f6\u5fc5\u987b\n     * street \u975e\u5fc5\u987b\u53c2\u6570 \u8857\u9053\u540d\u79f0 \u4fee\u6539\u8857\u9053\u540d\u79f0\u65f6\u5fc5\u987b\n     * address \u975e\u5fc5\u987b\u53c2\u6570 \u8be6\u7ec6\u5730\u5740 \u4fee\u6539\u8be6\u7ec6\u5730\u5740\u65f6\u5fc5\u987b\n     * name \u975e\u5fc5\u987b\u53c2\u6570 \u6536\u8d27\u4eba\u59d3\u540d \u4fee\u6539\u6536\u8d27\u4eba\u59d3\u540d\u65f6\u5fc5\u987b\n     * mobile \u975e\u5fc5\u987b\u53c2\u6570 \u6536\u8d27\u4eba\u624b\u673a\u53f7 \u4fee\u6539\u6536\u8d27\u4eba\u624b\u673a\u53f7\u65f6\u5fc5\u987b\n     * is_default \u975e\u5fc5\u987b\u53c2\u6570 \u662f\u5426\u662f\u9ed8\u8ba4\u5730\u5740 0\u4e3a\u5426\uff0c1\u4e3a\u662f \u4fee\u6539\u9ed8\u8ba4\u5730\u5740\u65f6\u5fc5\u987b\n     * zipcode \u975e\u5fc5\u987b\u53c2\u6570 \u90ae\u653f\u7f16\u7801 \u4fee\u6539\u90ae\u653f\u7f16\u7801\u65f6\u5fc5\u987b",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/admin/Address/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/addressSingleData"
+                        }
+                    },
+                    "422": {
+                        "description": "\u7f16\u8f91\u5931\u8d25"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/address/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "\u6536\u8d27\u5730\u5740"
+                ],
+                "summary": "\u5220\u9664\u6536\u8d27\u5730\u5740\u63a5\u53e3",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "/v3/address/list\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u5220\u9664\u6210\u529f, \u6ca1\u6709\u8fd4\u56de\u7ed3\u679c"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/alibabacategory/list": {
+            "get": {
+                "tags": [
+                    "1688\u5546\u54c1\u7ba1\u7406"
+                ],
+                "summary": "\u83b7\u53d61688\u5546\u54c1\u5206\u7c7b\u5217\u8868\u6570\u636e\u63a5\u53e3",
+                "description": "\n     * page \u5fc5\u987b\u53c2\u6570 \u9875\u7801\n     * page_size \u5fc5\u987b\u53c2\u6570 \u6bcf\u9875\u663e\u793a\u6761\u6570\n     * sort \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c:desc\u964d\u5e8f\u3001asc\u751f\u5e8f\n     * order \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u5b57\u6bb5 \u56fa\u5b9a\u503c id\n     * stats \u5fc5\u987b\u53c2\u6570 \u662f\u5426\u663e\u793a\u5728app\u6216\u7f51\u7ad9\u4e0a \u56fa\u5b9a\u503c\uff1a1",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/alibabacategoryListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/alibabaproduct/list": {
+            "get": {
+                "tags": [
+                    "1688\u5546\u54c1\u7ba1\u7406"
+                ],
+                "summary": "\u83b7\u53d61688\u5546\u54c1\u5217\u8868\u6570\u636e\u63a5\u53e3",
+                "description": "\n     * page \u5fc5\u987b\u53c2\u6570 \u9875\u7801\n     * page_size \u5fc5\u987b\u53c2\u6570 \u6bcf\u9875\u663e\u793a\u6761\u6570\n     * sort \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c:desc\u964d\u5e8f\u3001asc\u751f\u5e8f\n     * order \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u5b57\u6bb5 \u56fa\u5b9a\u503c id\n     * stats \u5fc5\u987b\u53c2\u6570 \u662f\u5426\u663e\u793a\u5728app\u6216\u7f51\u7ad9\u4e0a \u56fa\u5b9a\u503c\uff1a1\n     * category \u5fc5\u987b\u53c2\u6570 \u4e0a\u7ea7\u5206\u7c7b \u4ecev3/alibabacategory/list\u63a5\u53e3\u8fd4\u56de\u7684publishing=1\u7684\u8bb0\u5f55\u7684id\u5b57\u6bb5\u7684\u503c",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u9875\u7801",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/alibabacategoryListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/finance/withdraw": {
+            "post": {
+                "tags": [
+                    "\u8d22\u52a1\u6a21\u5757"
+                ],
+                "summary": "\u63d0\u73b0",
+                "description": "\n     * account_id \u5fc5\u987b\u53c2\u6570 \u63d0\u73b0\u8d26\u53f7\u7f16\u53f7 v3/account/list\u63a5\u53e3\u83b7\u53d6\n     * amount \u5fc5\u987b\u53c2\u6570 \u8981\u63d0\u73b0\u7684\u91d1\u989d",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/finance/exchange": {
+            "post": {
+                "tags": [
+                    "\u8d22\u52a1\u6a21\u5757"
+                ],
+                "summary": "\u79ef\u5206\u8f6c\u4f59\u989d",
+                "description": "\n     * type \u5fc5\u987b\u53c2\u6570 \u7c7b\u578b \u56fa\u5b9a\u503c: 3\n     * amount \u5fc5\u987b\u53c2\u6570 \u8981\u4e13\u6210\u4f59\u989d\u7684\u91d1\u5e01\u6570\u91cf",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "\u8bf7\u6c42\u6210\u529f"
+                    },
+                    "422": {
+                        "description": "\u521b\u5efa\u5931\u8d25"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/finance/withdrawrequest": {
+            "get": {
+                "tags": [
+                    "\u8d22\u52a1\u6a21\u5757"
+                ],
+                "summary": "\u83b7\u53d6\u5f53\u524d\u767b\u9646\u7528\u6237\u7684\u63d0\u73b0\u7533\u8bf7\u5217\u8868\u63a5\u53e3",
+                "description": "\n     * page \u5fc5\u987b\u53c2\u6570 \u9875\u7801\n     * page_size \u5fc5\u987b\u53c2\u6570 \u6bcf\u9875\u663e\u793a\u6761\u6570\n     * sort \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c:desc\u964d\u5e8f\u3001asc\u751f\u5e8f\n     * order \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u5b57\u6bb5 \u56fa\u5b9a\u503c id\n     * type \u5fc5\u987b\u53c2\u6570 \u7c7b\u578b \u56fa\u5b9a\u503c\uff1a5",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/turnoverListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/finance/turnover": {
+            "get": {
+                "tags": [
+                    "\u8d22\u52a1\u6a21\u5757"
+                ],
+                "summary": "\u83b7\u53d6\u6d41\u6c34\u8bb0\u5f55",
+                "description": "\n     * page \u5fc5\u987b\u53c2\u6570 \u9875\u7801\n     * page_size \u5fc5\u987b\u53c2\u6570 \u6bcf\u9875\u663e\u793a\u6761\u6570\n     * sort \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u65b9\u5f0f \u53ef\u9009\u503c:desc\u964d\u5e8f\u3001asc\u751f\u5e8f\n     * order \u5fc5\u987b\u53c2\u6570 \u6392\u5e8f\u5b57\u6bb5 \u56fa\u5b9a\u503c id\n     * type \u5fc5\u987b\u53c2\u6570 \u7c7b\u578b \u53ef\u9009\u503c: 0\u4e3a\u83b7\u53d6\u9664\u4e86\u63d0\u73b0\u8bb0\u5f55\u5916\u7684\u6240\u6709\u6570\u636e\uff0c1\u4e3a\u83b7\u53d6\u91d1\u5e01\u6d41\u6c34\u8bb0\u5f55\uff0c2\u4e3a\u83b7\u53d6\u4f59\u989d\u6d41\u6c34\u8bb0\u5f55",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/turnoverListData"
+                        }
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        },
+        "/v3/member/register": {
+            "post": {
+                "tags": [
+                    "\u4f1a\u5458\u63a5\u53e3"
+                ],
+                "summary": "\u4f1a\u5458\u6ce8\u518c\u63a5\u53e3",
+                "description": "\n     * mobile \u5fc5\u987b\u53c2\u6570 \u624b\u673a\u53f7\u7801\n     * code \u5fc5\u987b\u53c2\u6570 \u77ed\u4fe1\u9a8c\u8bc1\n     * password \u5fc5\u987b\u53c2\u6570 \u5bc6\u7801\n     * registration_id \u5fc5\u987b\u53c2\u6570 \u6fc0\u5149\u63a8\u9001\u7684\u8bbe\u5907\u53f7\n     * device_type \u5fc5\u987b\u53c2\u6570 \u8bbe\u5907\u7c7b\u578b(1\u4e3aIOS,2\u4e3aAndroid,\u9ed8\u8ba4\u4e3a1)\n     * device_no \u975e\u5fc5\u987b\u53c2\u6570 \u624b\u673a\u552f\u4e00\u6807\u8bc6\u7b26\n     * invite_code \u975e\u5fc5\u987b\u53c2\u6570 \u9080\u8bf7\u8005\u7684uuid",
+                "parameters": [
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/memberSingleData"
+                        }
+                    },
+                    "401": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    }
+                }
+            }
+        },
+        "/v3/member/login": {
+            "post": {
+                "tags": [
+                    "\u4f1a\u5458\u63a5\u53e3"
+                ],
+                "summary": "\u4f1a\u5458\u767b\u9646\u63a5\u53e3",
+                "description": "\n     * mobile \u5fc5\u987b\u53c2\u6570 \u624b\u673a\u53f7\u7801\n     * password \u5fc5\u987b\u53c2\u6570 \u5bc6\u7801\n     * registration_id \u5fc5\u987b\u53c2\u6570 \u6fc0\u5149\u63a8\u9001\u7684\u8bbe\u5907\u53f7\n     * device_type \u5fc5\u987b\u53c2\u6570 \u8bbe\u5907\u7c7b\u578b(1\u4e3aIOS,2\u4e3aAndroid,\u9ed8\u8ba4\u4e3a1)\n     * code \u975e\u5fc5\u987b\u53c2\u6570 \u77ed\u4fe1\u9a8c\u8bc1\n     * device_no \u975e\u5fc5\u987b\u53c2\u6570 \u624b\u673a\u552f\u4e00\u6807\u8bc6\u7b26",
+                "parameters": [
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/memberSingleData"
+                        }
+                    },
+                    "401": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    }
+                }
+            }
+        },
+        "/v3/member/{id}/edit": {
+            "put": {
+                "tags": [
+                    "\u4f1a\u5458\u63a5\u53e3"
+                ],
+                "summary": "\u4f1a\u5458\u7f16\u8f91\u4e2a\u4eba\u8d44\u6599\u63a5\u53e3",
+                "description": "\n     * nickname \u975e\u5fc5\u987b\u53c2\u6570 \u4fee\u6539\u6635\u79f0\u65f6\u5fc5\u987b\n     * avatar \u975e\u5fc5\u987b\u53c2\u6570 \u4fee\u6539\u5934\u50cf\u65f6\u5fc5\u987b\n     * password \u975e\u5fc5\u987b\u53c2\u6570 \u4fee\u6539\u5bc6\u7801\u65f6\u5fc5\u987b",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization \u767b\u5f55\u63a5\u53e3\u8fd4\u56de\u7684jwt\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u767b\u9646\u63a5\u53e3\u8fd4\u56de\u7684id\u5b57\u6bb5\u7684\u503c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "formData",
+                        "description": "\u52a0\u5bc6\u5b57\u7b26\u4e32",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8bf7\u6c42\u6210\u529f",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/memberSingleData"
+                        }
+                    },
+                    "422": {
+                        "description": "\u7f16\u8f91\u5931\u8d25"
+                    },
+                    "400": {
+                        "description": "\u7b7e\u540d\u4e0d\u5b58\u5728\u6216\u65e0\u6548\u7b7e\u540d"
+                    },
+                    "401": {
+                        "description": "jwt\u65e0\u6548\u6216\u8fc7\u671f\uff0c\u9700\u8981\u767b\u5f55"
+                    },
+                    "403": {
+                        "description": "\u65e0\u6743\u8bbf\u95ee"
+                    },
+                    "404": {
+                        "description": "\u627e\u4e0d\u5230\u6570\u636e"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "accessSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/accessSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "accessSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/accessSingle"
+                }
+            },
+            "type": "object"
+        },
+        "accessListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/accessListObj"
+                }
+            },
+            "type": "object"
+        },
+        "accessListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/accessData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "accessData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/accessSingle"
+            }
+        },
+        "accessSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "rule_id": {
+                    "description": "\u89d2\u8272",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "menu_id": {
+                    "description": "\u83dc\u5355",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "accountSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/accountSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "accountSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/accountSingle"
+                }
+            },
+            "type": "object"
+        },
+        "accountListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/accountListObj"
+                }
+            },
+            "type": "object"
+        },
+        "accountListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/accountData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "accountData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/accountSingle"
+            }
+        },
+        "accountSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "description": "\u7c7b\u578b(0\u4e3a\u652f\u4ed8\u5b9d,1\u4e3a\u5fae\u4fe1,2\u4e3a\u94f6\u884c\u5361,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "member_id": {
+                    "description": "\u4f1a\u5458",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "\u59d3\u540d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "account": {
+                    "description": "\u8d26\u53f7",
+                    "type": "string",
+                    "format": "string"
+                },
+                "mobile": {
+                    "description": "\u624b\u673a\u53f7\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "stats": {
+                    "description": "\u72b6\u6001(0\u4e3a\u542f\u7528,1\u4e3a\u7981\u7528,\u9ed8\u8ba41)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "extend_field": {
+                    "description": "\u62d3\u5c55\u5b57\u6bb5(\u5305\u542b\u53d1\u5361\u884c,\u53d1\u5361\u884c\u6240\u5728\u7701\u5e02\u7b49)",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_at": {
+                    "description": "\u7f16\u8f91\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "addressSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/addressSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "addressSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/addressSingle"
+                }
+            },
+            "type": "object"
+        },
+        "addressListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/addressListObj"
+                }
+            },
+            "type": "object"
+        },
+        "addressListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/addressData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "addressData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/addressSingle"
+            }
+        },
+        "addressSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "member_id": {
+                    "description": "\u6240\u5c5e\u4f1a\u5458",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "is_default": {
+                    "description": "\u662f\u5426\u9ed8\u8ba4\u5730\u5740(0\u4e3a\u5426,1\u4e3a\u662f,\u9ed8\u8ba41)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "province": {
+                    "description": "\u7701\u4efd",
+                    "type": "string",
+                    "format": "string"
+                },
+                "city": {
+                    "description": "\u57ce\u5e02",
+                    "type": "string",
+                    "format": "string"
+                },
+                "area": {
+                    "description": "\u533a\u53bf",
+                    "type": "string",
+                    "format": "string"
+                },
+                "street": {
+                    "description": "\u8857\u9053",
+                    "type": "string",
+                    "format": "string"
+                },
+                "location": {
+                    "description": "\u8be6\u7ec6\u5730\u5740",
+                    "type": "string",
+                    "format": "string"
+                },
+                "name": {
+                    "description": "\u6536\u8d27\u4eba\u59d3\u540d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "zipcode": {
+                    "description": "\u90ae\u7f16",
+                    "type": "string",
+                    "format": "string"
+                },
+                "mobile": {
+                    "description": "\u6536\u8d27\u4eba\u624b\u673a\u53f7",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "alibabacategorySingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/alibabacategorySingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "alibabacategorySingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/alibabacategorySingle"
+                }
+            },
+            "type": "object"
+        },
+        "alibabacategoryListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/alibabacategoryListObj"
+                }
+            },
+            "type": "object"
+        },
+        "alibabacategoryListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/alibabacategoryData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "alibabacategoryData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/alibabacategorySingle"
+            }
+        },
+        "alibabacategorySingle": {
+            "properties": {
+                "id": {
+                    "description": "1688\u5546\u54c1\u5206\u7c7b\u7f16\u53f7",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "\u5546\u54c1\u5206\u7c7b\u540d\u79f0",
+                    "type": "string",
+                    "format": "string"
+                },
+                "parent": {
+                    "description": "\u4e0a\u7ea7\u5206\u7c7b",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "publishing": {
+                    "description": "\u662f\u5426\u5141\u8bb8\u53d1\u5e03\u5546\u54c1(0\u4e3a\u5426,1\u4e3a\u662f,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "min_order_quantity": {
+                    "description": "\u6700\u5c0f\u8d77\u8ba2\u91cf",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "stats": {
+                    "description": "\u72b6\u6001(0\u4e3a\u4e0b\u67b6,1\u4e3a\u4e0a\u67b6,\u9ed8\u8ba41)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u8005",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u7f16\u8f91\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u7f16\u8f91\u8005",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "authoritySingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/authoritySingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "authoritySingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/authoritySingle"
+                }
+            },
+            "type": "object"
+        },
+        "authorityListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/authorityListObj"
+                }
+            },
+            "type": "object"
+        },
+        "authorityListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/authorityData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "authorityData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/authoritySingle"
+            }
+        },
+        "authoritySingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "rule_id": {
+                    "description": "\u6743\u9650",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "role_id": {
+                    "description": "\u89d2\u8272",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "memberSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/memberSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "memberSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/memberSingle"
+                }
+            },
+            "type": "object"
+        },
+        "memberListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/memberListObj"
+                }
+            },
+            "type": "object"
+        },
+        "memberListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/memberData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "memberData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/memberSingle"
+            }
+        },
+        "memberSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "uuid": {
+                    "description": "uuid",
+                    "type": "string",
+                    "format": "string"
+                },
+                "mobile": {
+                    "description": "\u624b\u673a\u53f7\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "nickname": {
+                    "description": "\u6635\u79f0",
+                    "type": "string",
+                    "format": "string"
+                },
+                "password": {
+                    "description": "\u5bc6\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "avatar": {
+                    "description": "\u5934\u50cfurl",
+                    "type": "string",
+                    "format": "string"
+                },
+                "parent": {
+                    "description": "\u4e0a\u7ea7\u7528\u6237",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "device_no": {
+                    "description": "\u8bbe\u5907\u53f7",
+                    "type": "string",
+                    "format": "string"
+                },
+                "registration_id": {
+                    "description": "\u6781\u5149\u63a8\u9001",
+                    "type": "string",
+                    "format": "string"
+                },
+                "device_type": {
+                    "description": "\u8bbe\u5907\u7c7b\u578b(1\u4e3aIOS,2\u4e3aAndroid,\u9ed8\u8ba4\u4e3a1)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "stats": {
+                    "description": "\u7528\u6237\u72b6\u6001(0\u4e3a\u7981\u6b62\u767b\u9646,1\u4e3a\u5141\u8bb8\u767b\u9646,\u9ed8\u8ba41)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "coupon_amount": {
+                    "description": "\u62fc\u56e2\u8ba2\u5355\u6210\u529f\u603b\u91d1\u989d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "tb_amount": {
+                    "description": "\u6dd8\u5b9d\u8ba2\u5355\u91d1\u989d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "integral": {
+                    "description": "\u79ef\u5206",
+                    "type": "string",
+                    "format": "string"
+                },
+                "balance": {
+                    "description": "\u53ef\u63d0\u73b0\u4f59\u989d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "withdraw": {
+                    "description": "\u63d0\u73b0\u91d1\u989d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "coupon_platform_income": {
+                    "description": "\u8be5\u7528\u6237\u901a\u8fc7\u62fc\u56e2\u7ed9\u5e73\u53f0\u521b\u9020\u7684\u6536\u5165",
+                    "type": "string",
+                    "format": "string"
+                },
+                "direct": {
+                    "description": "\u76f4\u5c5e\u597d\u53cb\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "indirect": {
+                    "description": "\u95f4\u63a5\u597d\u53cb\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "coupon_order_number": {
+                    "description": "\u62fc\u56e2\u8ba2\u5355\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "return_order_number": {
+                    "description": "\u9000\u8d27\u8ba2\u5355\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "refund_order_number": {
+                    "description": "\u9000\u6b3e\u8ba2\u5355\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "login_times": {
+                    "description": "\u767b\u9646\u6b21\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "last_login_time": {
+                    "description": "\u4e0a\u6b21\u767b\u9646\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "last_login_ip": {
+                    "description": "\u4e0a\u6b21\u767b\u9646\u6240\u4f7f\u7528\u7684ip",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_at": {
+                    "description": "\u6ce8\u518c\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "menuSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/menuSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "menuSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/menuSingle"
+                }
+            },
+            "type": "object"
+        },
+        "menuListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/menuListObj"
+                }
+            },
+            "type": "object"
+        },
+        "menuListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/menuData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "menuData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/menuSingle"
+            }
+        },
+        "menuSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "\u663e\u793a\u540d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "parent": {
+                    "description": "\u4e0a\u7ea7",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "path": {
+                    "description": "\u5c42\u7ea7\u5173\u7cfb",
+                    "type": "string",
+                    "format": "string"
+                },
+                "url": {
+                    "description": "\u7279\u6b8aURL",
+                    "type": "string",
+                    "format": "string"
+                },
+                "display": {
+                    "description": "\u662f\u5426\u663e\u793a\u5230\u5de6\u4fa7\u83dc\u5355(0\u4e3a\u5426,1\u4e3a\u662f,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "is_operation": {
+                    "description": "\u662f\u5426\u662f\u64cd\u4f5c(0\u4e3a\u5426,1\u4e3a\u662f,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "list_order": {
+                    "description": "\u6392\u5e8f",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u6700\u8fd1\u4e00\u6b21\u7f16\u8f91\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u7f16\u8f91\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "roleSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/roleSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "roleSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/roleSingle"
+                }
+            },
+            "type": "object"
+        },
+        "roleListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/roleListObj"
+                }
+            },
+            "type": "object"
+        },
+        "roleListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/roleData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "roleData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/roleSingle"
+            }
+        },
+        "roleSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "\u89d2\u8272",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u4fee\u6539\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u4fee\u6539\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "ruleSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/ruleSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "ruleSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/ruleSingle"
+                }
+            },
+            "type": "object"
+        },
+        "ruleListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/ruleListObj"
+                }
+            },
+            "type": "object"
+        },
+        "ruleListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/ruleData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "ruleData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/ruleSingle"
+            }
+        },
+        "ruleSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "\u6743\u9650\u540d\u79f0",
+                    "type": "string",
+                    "format": "string"
+                },
+                "stats": {
+                    "description": "\u72b6\u6001(0\u4e3a\u5426,1\u4e3a\u662f,\u9ed8\u8ba41)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u8005",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u66f4\u65b0\u8005",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u66f4\u65b0\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        },
+        "turnoverSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/turnoverSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "turnoverSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/turnoverSingle"
+                }
+            },
+            "type": "object"
+        },
+        "turnoverListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/turnoverListObj"
+                }
+            },
+            "type": "object"
+        },
+        "turnoverListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/turnoverData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "turnoverData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/turnoverSingle"
+            }
+        },
+        "turnoverSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "member_id": {
+                    "description": "\u4f1a\u5458",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "account_id": {
+                    "description": "\u63d0\u73b0\u8d26\u53f7",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "description": "\u7c7b\u578b(0\u4e3a\u91d1\u5e01\u8f6c\u5165,1\u4e3a\u91d1\u5e01\u6d88\u8d39,2\u4e3a\u91d1\u5e01\u8f6c\u4f59\u989d,3\u4e3a\u91d1\u5e01\u8f6c\u4f59\u989d,4\u4e3a\u9000\u56de\u4f59\u989d,5\u4e3a\u4f59\u989d\u63d0\u73b0)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "currency": {
+                    "description": "\u6263\u6b3e\u524d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "amount": {
+                    "description": "\u91d1\u989d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "remain": {
+                    "description": "\u6263\u6b3e\u540e",
+                    "type": "string",
+                    "format": "string"
+                },
+                "stats": {
+                    "description": "\u72b6\u6001(0\u4e3a\u5f85\u5ba1\u6838,1\u4e3a\u5ba1\u6838\u901a\u8fc7,2\u4e3a\u5ba1\u6838\u62d2\u7edd,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "remark": {
+                    "description": "\u5907\u6ce8",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_at": {
+                    "description": "\u5ba1\u6838\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u5ba1\u6838\u8005",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "userSingleData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "data"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "type": "object",
+                    "$ref": "#/definitions/userSingleObj"
+                }
+            },
+            "type": "object"
+        },
+        "userSingleObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/userSingle"
+                }
+            },
+            "type": "object"
+        },
+        "userListData": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u7f16\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u63d0\u793a\u4fe1\u606f",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "$ref": "#/definitions/userListObj"
+                }
+            },
+            "type": "object"
+        },
+        "userListObj": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/userData"
+                },
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                }
+            },
+            "type": "object"
+        },
+        "userData": {
+            "type": "array",
+            "items": {
+                "title": "data",
+                "$ref": "#/definitions/userSingle"
+            }
+        },
+        "userSingle": {
+            "properties": {
+                "id": {
+                    "description": "\u4e3b\u952e",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "username": {
+                    "description": "\u767b\u5f55\u540d",
+                    "type": "string",
+                    "format": "string"
+                },
+                "password": {
+                    "description": "\u5bc6\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "google_secret": {
+                    "description": "\u8c37\u6b4c\u8ba4\u8bc1\u5668",
+                    "type": "string",
+                    "format": "string"
+                },
+                "role": {
+                    "description": "\u89d2\u8272",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "mobile": {
+                    "description": "\u624b\u673a\u53f7\u7801",
+                    "type": "string",
+                    "format": "string"
+                },
+                "stats": {
+                    "description": "\u72b6\u6001(0\u4e3a\u5c01\u7981,1\u4e3a\u5141\u8bb8\u767b\u5f55,\u9ed8\u8ba40)",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "uuid": {
+                    "description": "uuid",
+                    "type": "string",
+                    "format": "string"
+                },
+                "last_login_time": {
+                    "description": "\u4e0a\u6b21\u767b\u5f55\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "login_times": {
+                    "description": "\u767b\u5f55\u6b21\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "\u521b\u5efa\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "created_by": {
+                    "description": "\u521b\u5efa\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "updated_at": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u4fee\u6539\u65f6\u95f4",
+                    "type": "string",
+                    "format": "string"
+                },
+                "updated_by": {
+                    "description": "\u6700\u540e\u4e00\u6b21\u4fee\u6539\u4eba",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "links": {
+            "required": [
+                "next_page",
+                "prev_page"
+            ],
+            "properties": {
+                "next_page": {
+                    "description": "\u4e0b\u4e00\u9875\u9875\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "prev_page": {
+                    "description": "\u4e0a\u4e00\u9875\u9875\u7801",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "type": "object"
+        },
+        "meta": {
+            "required": [
+                "total",
+                "per_page",
+                "total_pages",
+                "current_page",
+                "count"
+            ],
+            "properties": {
+                "total": {
+                    "description": "\u603b\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "per_page": {
+                    "description": "\u6bcf\u9875\u663e\u793a\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "total_pages": {
+                    "description": "\u603b\u9875\u6570",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "current_page": {
+                    "description": "\u5f53\u524d\u9875",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "count": {
+                    "description": "\u5f53\u524d\u4e5f\u603b\u6761\u76ee",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "links": {
+                    "description": "\u4e0a\u4e00\u9875\u4e0b\u4e00\u9875\u5bf9\u8c61",
+                    "type": "object",
+                    "$ref": "#/definitions/links"
+                }
+            },
+            "type": "object"
+        },
+        "unauthorized": {
+            "required": [
+                "errno",
+                "errmsg",
+                "result"
+            ],
+            "properties": {
+                "errno": {
+                    "description": "\u9519\u8bef\u7f16\u53f7",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "errmsg": {
+                    "description": "\u9519\u8bef\u4fe1\u606f\u63d0\u793a",
+                    "type": "string",
+                    "format": "string"
+                },
+                "result": {
+                    "description": "\u7a7a\u5bf9\u8c61",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

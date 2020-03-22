@@ -1,0 +1,113 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Common API",
+        "version": "1.0.0",
+        "description": "\u53a6\u95e8\u4e91\u98a0\u8f6f\u4ef6\u79d1\u6280\u6709\u9650\u516c\u53f8\uff0cAPI\u6d4b\u8bd5\u63a5\u53e3\u4e0e\u6587\u6863",
+        "contact": {
+            "email": "apiteam@wordnik.com"
+        }
+    },
+    "host": "192.168.1.123:8001",
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/common/sms": {
+            "get": {
+                "tags": [
+                    "common"
+                ],
+                "summary": "\u83b7\u53d6\u77ed\u4fe1\u9a8c\u8bc1\u7801",
+                "parameters": [
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "\u63a5\u6536\u77ed\u4fe1\u9a8c\u8bc1\u7801\u7684\u624b\u673a\u53f7",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "\u77ed\u4fe1\u9a8c\u8bc1\u7801\u7684\u7c7b\u578b\uff0c\u53ef\u9009\u503c\uff1aregister\u6ce8\u518c\u65f6\u4f7f\u7528\u7684\u77ed\u4fe1\u9a8c\u8bc1\u7801,reset_password\u91cd\u7f6e\u5bc6\u7801\u65f6\u4f7f\u7528\u7684\u77ed\u4fe1\u9a8c\u8bc1\u7801",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "errno\u4e3a000\u65f6\uff0c\u8868\u793a\u83b7\u53d6\u6210\u529f,result\u4e0b\u4e3a\u77ed\u4fe1\u9a8c\u8bc1\u7801\u5bf9\u8c61"
+                    }
+                }
+            }
+        },
+        "/common/location": {
+            "get": {
+                "tags": [
+                    "common"
+                ],
+                "summary": "\u83b7\u53d6\u7701\u4efd\u3001\u57ce\u5e02\u3001\u533a\u53bf\u3001\u8857\u9053",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "\u83b7\u53d6\u884c\u653f\u5355\u4f4d\u7684\u7c7b\u578b",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "\u884c\u653f\u5355\u4f4d\u7684\u7f16\u53f7",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "secret",
+                        "in": "query",
+                        "description": "\u79d8\u94a5",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "errno\u4e3a000\u65f6\uff0c\u8868\u793a\u83b7\u53d6\u6210\u529f,result\u4e0b\u4e3a\u77ed\u4fe1\u9a8c\u8bc1\u7801\u5bf9\u8c61"
+                    }
+                }
+            }
+        },
+        "/testjason/testapi": {
+            "get": {
+                "tags": [
+                    "testjason"
+                ],
+                "summary": "\u9a8c\u8bc1\u547d\u4ee4\u884c\u751f\u6210swagger\u4ee3\u7801",
+                "parameters": [
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "\u662f\u5426\u80fd\u591f\u6210\u529f",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "\u8c01\u4e5f\u4e0d\u77e5\u9053\u5462",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "errno\u4e3a000\u65f6\uff0c\u8868\u793a\u83b7\u53d6\u6210\u529f,result\u4e0b\u4e3a\u77ed\u4fe1\u9a8c\u8bc1\u7801\u5bf9\u8c61"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

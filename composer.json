@@ -1,0 +1,33 @@
+{
+    "require": {
+        "monolog/monolog": "1.2.*",
+        "doctrine/dbal": "v2.5.4",
+        "gregwar/captcha": "^1.1",
+        "firebase/php-jwt": "^4.0",
+        "hashids/hashids": "^2.0",
+        "zircote/swagger-php": "^2.0",
+        "weaponhsu/ylaliopen": "^0.1.3",
+        "weaponhsu/ylcodegenerator": "^0.4.6"
+    },
+    "autoload":{
+        "psr-4": {
+            "tests\\": "tests/",
+            "models\\": "application/models/",
+            "modules\\": "application/modules/",
+            "server\\": "server/",
+            "common\\": "application/library/Common",
+            "Task\\": "Task/"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
+    "require-dev": {
+        "eaglewu/swoole-ide-helper": "dev-master",
+        "weaponhsu/youli-php-lib": "dev-master",
+        "phpgangsta/googleauthenticator": "dev-master"
+    }
+}
