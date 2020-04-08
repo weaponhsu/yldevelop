@@ -6,13 +6,12 @@ use Yaf\Application;
 use Yaf\Request\Http;
 use Yaf\Registry;
 use Yaf\Session;
-use models\Mysql\db;
-//use models\Redis\RedisManager;
+//use models\Mysql\db;
+use models\Mysql\Eloquent as db;
 use models\Cache\Redis\RedisManager;
 use models\Cache\Redis\RedisSortedSetManager;
 use models\Cache\Redis\RedisStringManager;
 use Common\Log;
-use Hooks\routerStartupMiddlewarePlugin;
 use Hooks\HookMiddlewarePlugin;
 use Hooks\IpFilterMiddlewarePlugin;
 
@@ -95,7 +94,6 @@ class Bootstrap extends Bootstrap_Abstract
         Dispatcher::getInstance()->autoRender(false);
     }
 
-
     public function _initRouter(Dispatcher $dispatcher){
         $dispatcher->catchException(true);
         $router = $dispatcher->getRouter();
@@ -148,32 +146,9 @@ class Bootstrap extends Bootstrap_Abstract
      */
     public function _initDb()
     {
-        try {
-            $db = db::getInstance();
-            // 配置写库(主库)
-            $db->setConn('master');
-            $master_db = $db->getConn();
-
-            Registry::set("write", $master_db);
-
-            // 配置读库(从库)
-            if (isset(Registry::get("config")['db']['slave'])) {
-                $db->setConn('slave');
-                $slave_db = $db->getConn('slave');
-                Registry::set("read", $slave_db);
-            } else
-                Registry::set("read", $master_db);
-
-            if (isset(Registry::get("config")['db']['schema'])) {
-                $db->setConn('schema');
-                $schema_db = $db->getConn('schema');
-                Registry::set("schema", $schema_db);
-            }
-
-        } catch (Exception $e) {
-            exit(json_encode($e->getMessage()));
-        }
-
+        $db = db::getInstance();
+        // 配置写库(主库)
+        $db->getConn('master');
     }
 
     /*public function _initMemcache(){

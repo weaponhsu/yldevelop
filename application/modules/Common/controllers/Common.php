@@ -4,7 +4,7 @@ use Yaf\Registry;
 use youliPhpLib\Common\RsaOperation;
 use youliPhpLib\Common\Upload;
 use youliPhpLib\Common\DirFileOperation;
-use ErrorMsg\AbstractErrorMsg;
+use models\Exception\AbstractException;
 use youliPhpLib\Common\StringOperation;
 use Common\PhpExcelImport;
 use youliPhpLib\Common\RequestHelper;
@@ -93,7 +93,7 @@ class CommonController extends ApiBaseController
             $dir_file_operation = new DirFileOperation($file_path);
             $make_dir_result = $dir_file_operation->chkFileDir();
             if ($make_dir_result !== true) {
-                $e = new Exception(str_replace('%s', $request_file['name'], AbstractErrorMsg::UPLOAD_MAKE_DIR_FAILED . '(' . $make_dir_result . ')'), '003');
+                $e = new Exception(str_replace('%s', $request_file['name'], AbstractException::UPLOAD_MAKE_DIR_FAILED . '(' . $make_dir_result . ')'), '003');
                 throw $e;
             }
             $upload = new Upload($request_file);

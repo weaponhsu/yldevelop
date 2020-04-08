@@ -4,18 +4,13 @@ namespace models\Business;
 
 
 use Common\AccessToken4Api;
-use ErrorMsg\Admin\AdminErrMsg;
 use Hashids\Hashids;
 use Illuminate\Database\Capsule\Manager AS Capsule;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use models\Exception\Business\RoleException;
 use models\Exception\Business\UserException;
-use models\Exception\DAO\ModelDriverException;
 use models\Exception\DAO\ModelException;
-use models\Exception\DAO\ModelReflectionException;
-use models\Exception\DAO\ModelSqlException;
-use models\Exception\Service\ServiceException;
 use models\DAO\EloquentPaginator;
 use models\DAO\RoleModel;
 use models\DAO\UserModel;
@@ -321,7 +316,7 @@ class User
 
             return $module_info;
         } catch (Exception $e) {
-            throw new Exception(AdminErrMsg::USER_IS_NOT_EXISTS, AdminErrMsg::USER_IS_NOT_EXISTS_NO);
+            throw new Exception(UseException::USER_IS_NOT_EXISTS, UseException::USER_IS_NOT_EXISTS_NO);
         }
     }
 
@@ -381,7 +376,7 @@ class User
 
     public function genGoogleAuthenticator($parameters) {
         if (! isset($parameters['action']) || $parameters['action'] !== 'genGoogleAuth')
-            throw new Exception(AdminErrMsg::USER_INVALID_ACTION, AdminErrMsg::USER_INVALID_ACTION_NO);
+            throw new Exception(UseException::USER_INVALID_ACTION, UseException::USER_INVALID_ACTION_NO);
 
         $ga = new \PHPGangsta_GoogleAuthenticator();
 

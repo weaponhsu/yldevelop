@@ -2,7 +2,7 @@
 
 namespace models\Cache\Redis;
 
-use ErrorMsg\AbstractErrorMsg;
+use models\Exception\Cache\CacheException;
 use models\Cache\SortedSetCacheImpl;
 use models\Exception\Cache\RedisSortedSetException;
 use Yaf\Exception;
@@ -243,7 +243,7 @@ class RedisSortedSetManager /*extends RedisManager*/ implements SortedSetCacheIm
         }
 
         if(empty($return_arr))
-            throw new Exception(AbstractErrorMsg::REDIS_KEY_DELETE_FAILURE, AbstractErrorMsg::REDIS_KEY_DELETE_FAILURE_NO);
+            throw new Exception(CacheException::REDIS_KEY_DELETE_FAILURE, CacheException::REDIS_KEY_DELETE_FAILURE_NO);
         else
             return $return_arr;
     }

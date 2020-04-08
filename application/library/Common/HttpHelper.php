@@ -4,14 +4,12 @@
 namespace Common;
 
 
-use ErrorMsg\Admin\AccessErrMsg;
-use ErrorMsg\Api\ErrorMsg;
+use models\Exception\AbstractException;
 use Yaf\Exception;
 use Yaf\Registry;
 use Yaf\Request_Abstract;
 use Yaf\Response_Abstract;
 use Yaf\Session;
-use youliPhpLib\Common\Encrypt;
 use youliPhpLib\Common\RsaOperation;
 use youliPhpLib\Common\StringOperation;
 
@@ -115,7 +113,7 @@ class HttpHelper
         foreach (Registry::get("parameters") as $parameter => $value){
             //包含非法参数
             if(!in_array($parameter, $parameters_array) && $parameter != 'from_api')
-                throw new Exception(ErrorMsg::PARAMETER_IS_INVALID . $parameter, ErrorMsg::REQUIRED_IS_INVALID_NO);
+                throw new Exception(AbstractException::PARAMETER_IS_INVALID . $parameter, AbstractException::REQUIRED_IS_INVALID_NO);
 
             //入参中包含了必须参数，则将该参数从必须参数数组中剔除
             if(!empty($require_parameters_arr) && in_array($parameter, $require_parameters_arr)){
@@ -128,8 +126,8 @@ class HttpHelper
             throw new Exception(
                 str_replace('%s',
                     '<必须参数列表:' . implode(',', $require_parameters_arr) . '>',
-                    ErrorMsg::REQUIRED_PARAMETER_IS_MISSING),
-                ErrorMsg::REQUIRED_IS_INVALID_NO
+                    AbstractException::REQUIRED_PARAMETER_IS_MISSING),
+                AbstractException::REQUIRED_IS_INVALID_NO
             );
 
         //前端/客户端发送了完整必须参数列表，并且没有发送非法参数
@@ -161,7 +159,7 @@ class HttpHelper
         //验证session
         if(empty(Session::getInstance()->get('admin_id')) || empty(Session::getInstance()->get('role_id')) ||
             empty(Session::getInstance()->get("access_list"))){
-            throw new Exception(AccessErrMsg::USER_LOGIN_FIRST, AccessErrMsg::USER_LOGIN_FIRST_NO);
+            throw new Exception(AbstractException::LOGIN_FIRST, AbstractException::LOGIN_FIRST_NO);
         }
 
         //验证权限
@@ -191,7 +189,7 @@ class HttpHelper
             $current_url_is_valid = true;
 
         if($current_url_is_valid === false)
-            throw new Exception(AccessErrMsg::PERMISSION_DENIED, AccessErrMsg::PERMISSION_DENIED_NO);
+            throw new Exception(AbstractException::PERMISSION_DENIED, AbstractException::PERMISSION_DENIED_NO);
 
         return $current_url_is_valid;
     }
@@ -289,7 +287,7 @@ class HttpHelper
         if (! in_array($this->action_name, ['info', 'logout', 'delete']) && $this->rsa->verify(Registry::get('parameters')['sign'], $original_str) === false) {
             if (strpos($this->http->getServer('HTTP_REFERER'), '/swagger/') !== false)
                 exit($this->rsa->sign($original_str));
-            throw new Exception(ErrorMsg::SIGN_VERIFY_FAILURE, ErrorMsg::SIGN_INVALID_NO);
+            throw new Exception(AbstractException::SIGN_VERIFY_FAILURE, AbstractException::SIGN_INVALID_NO);
         }
 
         if($this->controller_name !== 'error' && strtolower($this->action_name !== 'rsaencrypt')){

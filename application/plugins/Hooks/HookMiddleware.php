@@ -39,11 +39,11 @@ class HookMiddlewarePlugin extends Plugin_Abstract
         $this->middleware->setResponseHeader();
 
         // 关闭sql
-        if (Registry::get('read')->isConnected() === true)
-            Registry::get('read')->close();
-
-        if (Registry::get('write')->isConnected() === true)
-            Registry::get('write')->close();
+//        if (Registry::get('read')->isConnected() === true)
+//            Registry::get('read')->close();
+//
+//        if (Registry::get('write')->isConnected() === true)
+//            Registry::get('write')->close();
     }
 
 }

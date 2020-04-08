@@ -4,7 +4,7 @@
 
 use Yaf\Controller_Abstract;
 use Yaf\Registry;
-use ErrorMsg\Api\ErrorMsg;
+use models\Exception\AbstractException;
 
 class ApiBaseController extends Controller_Abstract
 {
@@ -13,23 +13,23 @@ class ApiBaseController extends Controller_Abstract
     protected function _verify($method_name = '', $action_name = ''){
         //解密失败
         if(empty(Registry::get("parameters"))){
-            return ErrorMsg::SECRET_IS_NULL;
+            return AbstractException::SECRET_IS_NULL;
         }
 
         //接口controller参数为空
         if(empty($method_name)){
-            return ErrorMsg::INVALID_METHOD_NAME;
+            return AbstractException::INVALID_METHOD_NAME;
         }
 
         //接口action参数为空
         if(empty($action_name)){
-            return ErrorMsg::INVALID_ACTION_NAME;
+            return AbstractException::INVALID_ACTION_NAME;
         }
 
         //获取当前接口的可接受参数，并生成数组
         $parameter_str = Registry::get("config")['api'][substr($method_name, 0, strrpos($method_name, 'controller'))][substr($action_name, 0, strrpos($action_name, 'action'))];
         if(!$parameter_str){
-            return ErrorMsg::API_PARAMETERS_DOES_NOT_CONFIGURATION;
+            return AbstractException::API_PARAMETERS_DOES_NOT_CONFIGURATION;
         }
         $parameters_arr = explode(',', $parameter_str);
 
@@ -37,7 +37,7 @@ class ApiBaseController extends Controller_Abstract
 //        exit(json_encode([$parameters_arr, Registry::get("parameters")]));
         foreach($parameters_arr as $key => $value){
             if(!isset(Registry::get("parameters")[trim(strtolower($value))])){
-                return str_replace('%s', $value, ErrorMsg::INVALID_PARAMETER);
+                return str_replace('%s', $value, AbstractException::INVALID_PARAMETER);
             }
         }
 

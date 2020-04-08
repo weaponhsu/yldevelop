@@ -66,33 +66,4 @@ class AccessToken4Api
             throw new Exception($exception->getMessage(), '401');
         }
     }
-
-    /**
-     * 传入access_token与uuid，匹配判断access_token是否正确
-     * @param string $access_token access_token
-     * @param string $uuid uuid 用户uuid
-     * @return bool
-     * @throws Exception
-     */
-    static public function chkAccessToken($access_token = '', $uuid = '')
-    {
-        $access_token = !empty($access_token) && is_string($access_token) ? trim($access_token) : '';
-        $uuid = !empty($uuid) && is_string($uuid) ? trim($uuid) : '';
-        //access_token不存在于缓存中
-        Registry::get("redis")->select(0);
-        $member_info = json_decode(Registry::get("redis")->get($access_token), true);
-        if (Registry::get("redis")->get($access_token) === null || empty($access_token))
-            throw new Exception(ErrorMsg::LOGIN_FIRST, ErrorMsg::LOGIN_FIRST_NO);
-//            return new Exception("请先登录", "004");
-        //验证access_token与uuid是否一致
-        if ($member_info['uuid'] != $uuid)
-            throw new Exception("请先登录", "005");
-
-        /*$match_uuid = str_replace("uuid=", "", Util::decrypt($access_token, Registry::get("config")["api"]["md5"]["access_key"]));
-        if($match_uuid != $uuid){
-            return new Exception("uuid与token不匹配", "005");
-        }*/
-
-        return true;
-    }
 }

@@ -3,10 +3,8 @@
 namespace models\Cache\Redis;
 
 
-use ErrorMsg\AbstractErrorMsg;
-use Yaf\Exception;
+use models\Exception\Cache\CacheException;
 use Yaf\Registry;
-use Predis\Client;
 
 class RedisManager
 {
@@ -157,50 +155,50 @@ class RedisManager
         switch ($func_name){
             case 'getHash':
                 if(empty($key)){
-                    $exception_msg = str_replace('%s', $key, AbstractErrorMsg::REDIS_HASH_KEY_IS_INVALID);
-                    $exception_code = AbstractErrorMsg::REDIS_HASH_KEY_IS_INVALID_NO;
+                    $exception_msg = str_replace('%s', $key, CacheException::REDIS_HASH_KEY_IS_INVALID);
+                    $exception_code = CacheException::REDIS_HASH_KEY_IS_INVALID_NO;
                 }
 //                $field = isset($args_array['field']) && !empty($args_array['field']) ? $args_array['field'] : '';
 //                if(empty($field)){
-//                    $exception_msg = str_replace('%s', $key, AbstractErrorMsg::REDIS_HASH_GET_FIELD_NOT_EXISTS);
-//                    $exception_code = AbstractErrorMsg::REDIS_HASH_GET_FIELD_NOT_EXISTS_NO;
+//                    $exception_msg = str_replace('%s', $key, CacheException::REDIS_HASH_GET_FIELD_NOT_EXISTS);
+//                    $exception_code = CacheException::REDIS_HASH_GET_FIELD_NOT_EXISTS_NO;
 //                }
                 break;
             case 'genHash':
                 // redis hash key的类型与长度是否合法
                 if(empty($key)){
-                    $exception_msg = str_replace('%s', $key, AbstractErrorMsg::REDIS_HASH_KEY_IS_INVALID);
-                    $exception_code = AbstractErrorMsg::REDIS_HASH_KEY_IS_INVALID_NO;
+                    $exception_msg = str_replace('%s', $key, CacheException::REDIS_HASH_KEY_IS_INVALID);
+                    $exception_code = CacheException::REDIS_HASH_KEY_IS_INVALID_NO;
                 }else if(strlen($key) > Registry::get('config')['redis']['limitation']['hash']['key']['len']){
                     $exception_msg = str_replace(
                         ['%s', '%d'],
                         [$key, Registry::get('config')['redis']['limitation']['hash']['key']['len']],
-                        AbstractErrorMsg::REDIS_HASH_KEY_LEN_INVALID);
-                    $exception_code = AbstractErrorMsg::REDIS_HASH_KEY_LEN_INVALID_NO;
+                        CacheException::REDIS_HASH_KEY_LEN_INVALID);
+                    $exception_code = CacheException::REDIS_HASH_KEY_LEN_INVALID_NO;
                 }
                 // 判断array是否合法
                 if(empty($data) || !is_array($data)){
-                    $exception_msg = AbstractErrorMsg::REDIS_HASH_VALUE_MUST_BE_ARRAY;
-                    $exception_code = AbstractErrorMsg::REDIS_HASH_VALUE_MUST_BY_ARRAY_NO;
+                    $exception_msg = CacheException::REDIS_HASH_VALUE_MUST_BE_ARRAY;
+                    $exception_code = CacheException::REDIS_HASH_VALUE_MUST_BY_ARRAY_NO;
                 }
                 break;
             case 'getString' || 'deleteString' || 'getKeysByPattern':
                 // redis string key的类型是否合法
                 if(empty($key)){
-                    $exception_msg = str_replace('%s', $key, AbstractErrorMsg::REDIS_STRING_KEY_IS_INVALID);
-                    $exception_code = AbstractErrorMsg::REDIS_STRING_KEY_IS_INVALID_NO;
+                    $exception_msg = str_replace('%s', $key, CacheException::REDIS_STRING_KEY_IS_INVALID);
+                    $exception_code = CacheException::REDIS_STRING_KEY_IS_INVALID_NO;
                 }
                 break;
             case 'genString' || 'updateString':
                 // redis string key的类型是否合法
                 if(empty($key)){
-                    $exception_msg = str_replace('%s', $key, AbstractErrorMsg::REDIS_STRING_KEY_IS_INVALID);
-                    $exception_code = AbstractErrorMsg::REDIS_STRING_KEY_IS_INVALID_NO;
+                    $exception_msg = str_replace('%s', $key, CacheException::REDIS_STRING_KEY_IS_INVALID);
+                    $exception_code = CacheException::REDIS_STRING_KEY_IS_INVALID_NO;
                 }
                 // 判断string是否合法
                 if(empty($data) || ! is_string($data)){
-                    $exception_msg = AbstractErrorMsg::REDIS_STRING_VALUE_IS_INVALID;
-                    $exception_code = AbstractErrorMsg::REDIS_STRING_VALUE_IS_INVALID_NO;
+                    $exception_msg = CacheException::REDIS_STRING_VALUE_IS_INVALID;
+                    $exception_code = CacheException::REDIS_STRING_VALUE_IS_INVALID_NO;
                 }
                 break;
         }

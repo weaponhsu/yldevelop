@@ -4,7 +4,7 @@
 namespace Hooks;
 
 
-use ErrorMsg\Api\ErrorMsg;
+use models\Exception\AbstractException;
 use Yaf\Exception;
 use Yaf\Plugin_Abstract;
 use Yaf\Registry;
@@ -28,12 +28,12 @@ class IpFilterMiddlewarePlugin extends Plugin_Abstract
         // 判断请求admin模块或api模块的ip是否合法
         if (($request->getModuleName() === 'Api' && strpos($white_ip_string, $client_ip) === false) /*||
             ($request->getModuleName() === 'Admin' && $client_ip !== Registry::get('config')['ip']['admin']['white'])*/) {
-            throw new Exception(ErrorMsg::INVALID_IP, ErrorMsg::SIGN_INVALID_NO);
+            throw new Exception(AbstractException::INVALID_IP, AbstractException::SIGN_INVALID_NO);
         }
 
         // 判断请求notify模块的ip是否合法
         if ($request->getModuleName() === 'Notify' &&  strpos($white_ip_string, $client_ip) === false) {
-            throw new Exception(ErrorMsg::INVALID_IP, ErrorMsg::SIGN_INVALID_NO);
+            throw new Exception(AbstractException::INVALID_IP, AbstractException::SIGN_INVALID_NO);
         } else {
 //            Registry::get('ip_log')->debug('判断远程服务端的ip是否合法. 远程服务端ip: ' . StringOperation::getIP());
         }
