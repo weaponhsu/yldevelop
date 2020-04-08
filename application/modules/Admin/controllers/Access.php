@@ -19,6 +19,13 @@ class AccessController extends ApiBaseController
      *          type="string"
      *     ),
      *     @SWG\Parameter(
+     *          name="name",
+     *          description="角色名称",
+     *          in="query",
+     *          required=false,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
      *          name="page",
      *          description="页码",
      *          in="query",

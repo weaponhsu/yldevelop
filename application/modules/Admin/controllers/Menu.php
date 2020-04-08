@@ -20,6 +20,20 @@ class MenuController extends ApiBaseController
      *          type="string"
      *     ),
      *     @SWG\Parameter(
+     *          name="display",
+     *          description="是否是菜单 1为是 0为否",
+     *          in="query",
+     *          required=false,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="is_operation",
+     *          description="是否是接口 1为是 0为否",
+     *          in="query",
+     *          required=false,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
      *          name="page",
      *          description="页码",
      *          in="query",

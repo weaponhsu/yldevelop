@@ -377,7 +377,6 @@ class UserController extends ApiBaseController
      */
     public function createAction() {
         $parameters = Registry::get('parameters');
-        $parameters['created_by'] = Registry::get('jwt_info')->id;
 
         $create_res = User::createUser($parameters);
 
@@ -469,7 +468,7 @@ class UserController extends ApiBaseController
     public function editAction() {
         $parameters = Registry::get('parameters');
 
-        $update_res = User::update($parameters);
+        $update_res = User::updateUser($parameters);
 
         return $this->_responseJson(['data' => $update_res]);
     }
@@ -518,61 +517,6 @@ class UserController extends ApiBaseController
      */
     public function deleteAction() {
         User::deleteUser(Registry::get('parameters')['id']);
-        return $this->_responseJson(new stdClass(), '000', '删除成功');
-    }
-
-    /**
-     * @SWG\Post(
-     *     path="/admin/user/batchdelete",
-     *     tags={"后台账号模块"},
-     *     summary="批量删除后台账号接口",
-     *     description="",
-     *     @SWG\Parameter(
-     *          name="Authorization",
-     *          description="Authorization 登录接口返回的jwt字段的值",
-     *          in="header",
-     *          required=true,
-     *          type="string"
-     *     ),
-     *     @SWG\Parameter(
-     *          name="ids",
-     *          description="要删除的id，多个用半角逗号间隔",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *     ),
-     *     @SWG\Parameter(
-     *          name="sign",
-     *          description="签名",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *     ),
-     *     @SWG\Response(
-     *         response="201",
-     *         description="删除成功, 没有返回结果"
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="签名不存在或无效签名"
-     *     ),
-     *     @SWG\Response(
-     *         response="401",
-     *         description="jwt无效或过期，需要登录"
-     *     ),
-     *     @SWG\Response(
-     *         response="403",
-     *         description="无权访问"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="用户已经不存在了"
-     *     )
-     * )
-     */
-    public function batchDeleteAction() {
-        $id_arr = explode(',', Registry::get('parameters')['ids']);
-        User::batchDeleteUsers($id_arr);
         return $this->_responseJson(new stdClass(), '000', '删除成功');
     }
 

@@ -58,6 +58,15 @@ use models\Exception\Transformer\TransformerException;
 class IndexController extends ApiBaseController
 {
     public function indexAction() {
+        $user_model = new \models\DAO\UserModel();
+//        exit();
+//        $user_model->all()->toArray();
+//        $sql = $user_model::query('select password from user where id = ?', [66]);
+//        var_dump($sql->get()->toArray());
+
+        $user = \models\Business\User::login('13333333333', 'Aa123456');
+
+        return $this->_responseJson($user);
         echo 'adf';exit();
 
         // 1688 获取商品分类测试

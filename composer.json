@@ -1,7 +1,8 @@
 {
     "require": {
         "monolog/monolog": "1.2.*",
-        "doctrine/dbal": "v2.5.4",
+        "illuminate/database": "^5.1",
+        "illuminate/events": "^5.1",
         "gregwar/captcha": "^1.1",
         "firebase/php-jwt": "^4.0",
         "hashids/hashids": "^2.0",

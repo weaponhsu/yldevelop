@@ -48,9 +48,12 @@ class UserException extends Exception
     const USER_INVALID_ACTION_NO = "400";
 
     const USER_HAS_NO_ACCESS = "当前登陆账号没有对应权限";
-    const USER_HAS_NO_ACCESS_NO = "404";
+    const USER_HAS_NO_ACCESS_NO = "401";
 
     const USER_HAS_NO_GOOGLE_VERIFY = "尚未进行谷歌认证";
     const USER_HAS_NO_GOOGLE_VERIFY_NO = "403";
+
+    const USER_UNIQUE = "手机号码或登录名不能重复";
+    const USER_UNIQUE_NO = "400";
 
 }

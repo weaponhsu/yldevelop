@@ -11,6 +11,8 @@ class ErrorController extends ApiBaseController
         $err_msg = $exception->getMessage();
         $result = new stdClass();
 
+        var_dump($exception->getFile());
+
         var_dump(get_class($exception));
         var_dump($exception->getCode());
         echo $exception->getMessage() . "。<位置: {" . str_replace(APP_PATH, "", $exception->getFile()) . "-{$exception->getLine()}}>";

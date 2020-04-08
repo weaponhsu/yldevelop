@@ -9,6 +9,10 @@ class ErrorController extends ApiBaseController
         $err_msg = $exception->getMessage();
         $result = new stdClass();
 
+//        echo $exception->getMessage() . '-' . $exception->getFile() . '-' . $exception->getLine();
+//        exit(json_encode(get_class($exception)));
+//        exit(json_encode($exception->getMessage()));
+
 //        if ($exception instanceof Exception\UniqueConstraintViolationException ||
 //            $exception instanceof Exception\DriverException) {
 //            $err_no = '422';
