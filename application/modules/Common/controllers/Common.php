@@ -5,11 +5,7 @@ use youliPhpLib\Common\RsaOperation;
 use youliPhpLib\Common\Upload;
 use youliPhpLib\Common\DirFileOperation;
 use models\Exception\AbstractException;
-use youliPhpLib\Common\StringOperation;
 use Common\PhpExcelImport;
-use youliPhpLib\Common\RequestHelper;
-use models\Business\SmsCode;
-use models\Business\Location;
 
 
 class CommonController extends ApiBaseController
@@ -134,109 +130,5 @@ class CommonController extends ApiBaseController
             }
         }
         return $this->_responseJson(['data' => $response]);
-    }
-
-    /**
-     * @SWG\Get(
-     *     path="/v3/common/verification",
-     *     tags={"Common"},
-     *     summary="获取短信验证码",
-     *     description="
-     * mobile 必须参数 手机号码
-     * type 必须参数 类型 可选值: login=登陆,register=注册
-     * captcha=图片验证码 非必须参数",
-     *     @SWG\Parameter(
-     *          name="secret",
-     *          description="所有参数使用&连接的rsa加密结果",
-     *          in="query",
-     *          required=true,
-     *          type="string"
-     *     ),
-     *     @SWG\Response(
-     *          response=200,
-     *          description="返回结果中包含error,message,result。result为参数公钥加密过后的字符串"
-     *     )
-     * )
-     */
-    public function verificationAction() {
-        $verification_result = true;
-
-        //校验图片验证码
-        if (isset(Registry::get("parameters")["captcha"])) {
-            $verification_result = \Common\Verification::checkVerification(
-                Registry::get("parameters")["mobile"],
-                Registry::get("parameters")["type"],
-                Registry::get("parameters")["captcha"],
-                true
-            );
-        }
-
-        if ($verification_result !== true) throw new Exception("图片验证码校验失败");
-
-        //验证手机号码有效性
-        try {
-            StringOperation::mobileIsValid(Registry::get("parameters")["mobile"]);
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage(), 400);
-        }
-
-        //获取短信验证码
-        $verification_arr = SmsCode::genSmsCode(
-            Registry::get('parameters')['mobile'],
-            Registry::get('parameters')['type']
-        );
-
-        //生成发送短信验证码的参数，调用接口，发送短信验证码
-        $content = str_replace("#verification#", $verification_arr['verification'], SmsCode::LOGIN_SMS_TEMPLATE);
-
-        // 蓝创发送短信
-        $arr = [
-            'account'  => Registry::get('config')['sms']['username'],
-            'password' => Registry::get('config')['sms']['password'],
-            'msg' => urlencode($content),
-            'phone' => Registry::get("parameters")['mobile'],
-            'report' => true
-        ];
-        list($header, $msg) = RequestHelper::curlRequest(
-            Registry::get('config')['sms']['url'], json_encode($arr), 'POST',
-            ['Content-Type: application/json; charset=utf-8']);
-        $sms_res = json_decode(substr($msg, $header), true);
-
-        if ($sms_res['code'] != '0')
-            Registry::get('user_log')->err('短信下发失败:' . json_encode([$arr, $sms_res]) . '.reason: ' . $sms_res['errorMsg']);
-//        else
-//            Registry::get('user_log')->info('短信下发成功:' . json_encode([$arr, $sms_res]));
-
-        return $this->_responseJson(['data' => [Registry::get('parameters')['mobile'], $verification_arr['verification']]]);
-    }
-
-    /**
-     * @SWG\Get(
-     *     path="/v3/common/location",
-     *     tags={"Common"},
-     *     summary="获取省市区县街道接口",
-     *     description="
-     * type 必须参数 类型 可选值: 1为省份，2为城市，3为区县，4为街道
-     * parent_id 非必须参数 上级行政单位编号 获取市、区县、街道时必须，需要发送上级行政单位编号",
-     *     @SWG\Parameter(
-     *          name="secret",
-     *          description="所有参数使用&连接的rsa加密结果",
-     *          in="query",
-     *          required=true,
-     *          type="string"
-     *     ),
-     *     @SWG\Response(
-     *          response=200,
-     *          description="返回结果中包含error,message,result。result为参数公钥加密过后的字符串"
-     *     )
-     * )
-     */
-    public function locationAction() {
-        $parameters = Registry::get('parameters');
-
-        $data = Location::getLocation(
-            isset($parameters['parent_id']) ? $parameters['parent_id'] : '', $parameters['type']);
-
-        return $this->_responseJson(['data' => $data]);
     }
 }
