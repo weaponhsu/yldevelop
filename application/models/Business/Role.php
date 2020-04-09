@@ -161,7 +161,7 @@ class Role
 
             return $role_model;
         } catch (ModelNotFoundException $e) {
-            throw new RuleException(RuleException::RULE_NOT_EXISTS, RuleException::RULE_NOT_EXISTS_NO);
+            throw new RoleException(RoleException::ROLE_NOT_EXISTS, RoleException::ROLE_NOT_EXISTS_NO);
         } catch (RoleException $e) {
             throw $e;
         } catch (QueryException $e) {

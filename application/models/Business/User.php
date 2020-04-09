@@ -94,7 +94,7 @@ class User
      * @return array
      * @throws UserException
      */
-    public function info() {
+    static public function info() {
         // 尚未验证谷歌认证器
         if (! is_null(Session::getInstance()->get('google')) && Session::getInstance()->get('google') === false)
             throw new UserException(UserException::USER_HAS_NO_GOOGLE_VERIFY, UserException::USER_HAS_NO_GOOGLE_VERIFY_NO);
@@ -116,7 +116,7 @@ class User
      * @throws ModelException
      * @throws UserException
      */
-    public function getUserList($parameters = []) {
+    static public function getUserList($parameters = []) {
         try {
             $user_model = new UserModel();
 
@@ -155,7 +155,7 @@ class User
      * @throws RoleException
      * @throws UserException
      */
-    public function createUser($parameters = []) {
+    static public function createUser($parameters = []) {
         try {
 
             $user = new UserModel();
@@ -177,6 +177,8 @@ class User
             $user->created_by = Registry::get('jwt_info')->id;
             $user->updated_by = Registry::get('jwt_info')->id;
 
+            // 开启日志
+            Capsule::connection()->enableQueryLog();
             $user->saveOrFail();
 
             return $user;
@@ -196,7 +198,7 @@ class User
      * @throws RoleException
      * @throws UserException
      */
-    public function updateUser($parameters = []) {
+    static public function updateUser($parameters = []) {
         try {
             if (! isset($parameters['id']) && empty($parameters['id']))
                 throw new UserException(UserException::USER_EDIT_ID_IS_EMPTY, UserException::USER_EDIT_ID_IS_EMPTY_NO);
@@ -244,6 +246,9 @@ class User
 
             if ($update === true) {
                 $user->updated_by = Registry::get('jwt_info')->id;
+
+                // 开启日志
+                Capsule::connection()->enableQueryLog();
                 $user->saveOrFail();
             }
 
@@ -269,11 +274,16 @@ class User
      * @param int $user_id
      * @throws UserException
      */
-    public function deleteUser($user_id = 0) {
+    static public function deleteUser($user_id = 0) {
         try {
             if ( empty($user_id))
                 throw new UserException(UserException::USER_ID_IS_EMPTY, UserException::USER_ID_IS_EMPTY_NO);
-            UserModel::findOrfail($user_id)->delete();
+
+            $user_model = UserModel::findOrfail($user_id);
+
+            // 开启日志
+            Capsule::connection()->enableQueryLog();
+            $user_model->delete();
 
         } catch (UserException $e) {
             throw $e;
@@ -374,7 +384,7 @@ class User
         }
     }
 
-    public function genGoogleAuthenticator($parameters) {
+    static public function genGoogleAuthenticator($parameters) {
         if (! isset($parameters['action']) || $parameters['action'] !== 'genGoogleAuth')
             throw new Exception(UseException::USER_INVALID_ACTION, UseException::USER_INVALID_ACTION_NO);
 
@@ -390,7 +400,7 @@ class User
      * @param string $secret
      * @throws UserException
      */
-    public function googleAuthenticator($code = '', $secret = '') {
+    static public function googleAuthenticator($code = '', $secret = '') {
         try {
             if (empty($code) || empty($secret))
                 throw new UserException(UserException::USER_INVALID_GOOGLE_AUTHENTICATOR, UserException::USER_INVALID_GOOGLE_AUTHENTICATOR_NO);

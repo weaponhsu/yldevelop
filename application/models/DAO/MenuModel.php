@@ -1,9 +1,11 @@
 <?php
 
-
 namespace models\DAO;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Yaf\Registry;
+
 
 /**
  * @SWG\Swagger(
@@ -59,8 +61,32 @@ use Illuminate\Database\Eloquent\Model;
  *     )
  * )
  */
-class MenuModel extends Model
-{
+class MenuModel extends Model{
+
     protected $table = 'menu';
+
+    public $timestamps = false;
+
+    /**
+     * 注册事件
+     */
+    static public function boot() {
+        parent::boot();
+
+        static::created(function ($model) {
+            // 日志记录
+            Registry::get('db_log')->info(get_class($model) . ' - created - ' . json_encode(Capsule::connection()->getQueryLog()[0]));
+        });
+
+        static::updated(function ($model) {
+            // 日志记录
+            Registry::get('db_log')->info(get_class($model) . ' - updated - ' . json_encode(Capsule::connection()->getQueryLog()[0]));
+        });
+
+        static::deleted(function ($model) {
+            // 日志记录
+            Registry::get('db_log')->info(get_class($model) . ' - deleted - ' . json_encode(Capsule::connection()->getQueryLog()[0]));
+        });
+    }
 
 }

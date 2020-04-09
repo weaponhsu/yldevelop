@@ -17,9 +17,6 @@ class RoleException extends Exception
     const ROLE_CREATE_FAILURE = '角色创建失败';
     const ROLE_CREATE_FAILURE_NO = '422';
 
-    const ROLE_EDIT_ID_IS_EMPTY = '角色编号不存在';
-    const ROLE_EDIT_ID_IS_EMPTY_NO = '422';
-
     const ROLE_EDIT_FAILURE = '用户编辑失败';
     const ROLE_EDIT_FAILURE_NO = '422';
 
